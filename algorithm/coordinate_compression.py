@@ -6,6 +6,7 @@ from bisect import bisect_left
 def compress(a):
     '''
     配列の大小関係を抽出する(1次元圧縮)
+    O(NlogN)
     '''
     tmp = sorted(list(set(a)))
     res = []
