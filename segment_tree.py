@@ -17,49 +17,62 @@ def init(a):
         seg[i] = segfunc(seg[2*i+1], seg[2*i+2])
 
 
-def update(k, x):
+def query(l, r):
     '''
-    a[k]の値をxに更新
+    [l, r)についてsegfuncを適用したものを求める
     O(logN)
     '''
-    k += num - 1
-    seg[k] = x
-    while k:
-        k = (k - 1) // 2
-        seg[k] = segfunc(seg[k*2+1], seg[k*2+2])
-
-
-def query(p, q):
-    '''
-    [p, q)についてsegfuncを適用したものを返す
-    O(logN)
-    '''
-    if q <= p:
+    if r <= l:
         return ide_ele
     
-    p += num - 1
-    q += num - 2
+    l += num - 1
+    r += num - 2
     res = ide_ele
 
-    while q - p > 1:
-        if p & 1 == 0:
-            res = segfunc(res, seg[p])
-        if q & 1 == 1:
-            res = segfunc(res, seg[q])
-            q -= 1
-        p = p // 2
-        q = (q - 1) // 2
+    while r - l > 1:
+        if l & 1 == 0:
+            res = segfunc(res, seg[l])
+        if r & 1 == 1:
+            res = segfunc(res, seg[r])
+            r -= 1
+        l = l // 2
+        r = (r - 1) // 2
     
-    if p == q:
-        res = segfunc(res, seg[p])
+    if l == r:
+        res = segfunc(res, seg[l])
     else:
-        res = segfunc(res, segfunc(seg[p], seg[q]))
+        res = segfunc(res, segfunc(seg[l], seg[r]))
     
     return res
 
 
-################################
-n = 8                             # 要素数
-num = (2 ** len(bin(n - 1)) - 2)  # n以上の最小の2のべき乗
+def update(i, x):
+    '''
+    a[i]の値をxに更新
+    O(logN)
+    '''
+    i += num - 1
+    seg[i] = x
+    while i:
+        i = (i - 1) // 2
+        seg[i] = segfunc(seg[i*2+1], seg[i*2+2])
+
+
+
+n = 6                             # 要素数
+num = (2 ** len(bin(n - 1)) - 2)  # n以上の最小の2の累乗
 ide_ele = float('inf')            # 単位元(最小値のセグ木:inf, 最大値のセグ木:-1, 和のセグ木:0, 積のセグ木:1, gcdのセグ木:0)
 seg = [ide_ele] * 2 * num
+
+'''
+a = [3, 1, 7, 4, 9, 2]
+init(a)
+
+query(1, 4)
+> 1
+
+update(1, 6)
+
+query(1, 4)
+> 4
+'''

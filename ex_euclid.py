@@ -10,3 +10,10 @@ def ex_gcd(a, b):
     else:
         x, y = ex_gcd(b, a%b)
         return y, x - (a // b) * y
+
+
+
+'''
+ex_gcd(4, 12)
+> (1, 0)
+'''

@@ -30,13 +30,17 @@ def prim():
     return cost
 
 
-################################
-v, e = map(int, input().split())  # v:頂点数, e:辺の数
 
-edge = [[] for _ in range(v)]  # edge[i]:iを始点に持つ辺の[重み,終点]のリスト
-for _ in range(e):
-    s, t, d = map(int, input().split())
-    edge[s].append([d, t])
-    edge[t].append([d, s]) 
+v = 6  # 頂点数
+edge = [[[1, 1], [3, 2]], 
+        [[1, 0], [1, 2], [7, 3], [3, 4]],
+        [[3, 0], [1, 1], [1, 4]],
+        [[7, 1], [1, 4], [1, 5]],
+        [[3, 1], [1, 2], [1, 3], [6, 5]],
+        [[1, 3], [6, 4]]
+        ]  # edge[i]:iを始点に持つ辺の[重み,終点]のリスト
 
-print(prim())
+'''
+prim()
+> 5
+'''

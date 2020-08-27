@@ -44,6 +44,21 @@ def same(x, y):
     return find(x) == find(y)
 
 
-##############
-v = 10          # 頂点数
+
+v = 6           # 頂点数
 par = [-1] * v  # 根:-size, 葉:親の頂点
+
+'''
+union(0, 1)
+union(0, 3)
+union(1, 4)
+
+find(3)
+ > 0
+
+size(1)
+> 4
+
+same(1, 3)
+> True
+'''

@@ -16,3 +16,11 @@ def LIS(seq):
             l[bisect_left(l, v)] = v
 
     return len(l)
+
+
+
+'''
+a = [1, 5, 3, 6, 2, 4, 8, 7]
+LIS(a)
+> 4
+'''

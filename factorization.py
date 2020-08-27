@@ -2,7 +2,7 @@
 
 def factorization(n):
     '''
-    素因数分解の結果を二次元配列に格納する
+    素因数分解
     O(√N)
     '''
     res = []
@@ -20,6 +20,7 @@ def factorization(n):
         res.append([n, 1])
 
     return res
+
 
 
 '''

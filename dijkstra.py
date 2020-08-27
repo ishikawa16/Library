@@ -31,12 +31,16 @@ def dijkstra(s):
     return dist
 
 
-################################
-v, e = map(int, input().split())  # v:頂点数, e:辺の数
 
-edge = [[] for _ in range(v)]  # edge[i]:iを始点に持つ辺の[重み,終点]のリスト
-for _ in range(e):
-    s, t, d = map(int, input().split())
-    edge[s].append([d, t])
+v = 5  # 頂点数
+edge = [[[4, 1], [3, 2], [9, 3]],
+        [[4, 0], [9, 2]],
+        [[3, 0], [9, 1], [2, 3], [5, 4]],
+        [[9, 0], [2, 2], [1, 4]],
+        [[5, 2], [1, 3]],
+        ]  # edge[i]:iを始点に持つ辺の[重み,終点]のリスト
 
-print(dijkstra(0))
+'''
+dijkstra(0)
+> [0, 4, 3, 5, 6]
+'''

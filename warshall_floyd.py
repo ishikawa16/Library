@@ -13,14 +13,19 @@ def warshall_floyd():
     return dist
 
 
-################################
-v, e = map(int, input().split())  # v:頂点数, e:辺の数
 
-dist = [[float('inf')] * v for _ in range(v)]  # dist[i][j]:i → jの重み(存在しない場合はinf, i = jの場合は0)
-for _ in range(e):
-    s, t, d = map(int, input().split())
-    dist[s][t] = d
-for i in range(v):
-    dist[i][i] = 0
+v = 4  # 頂点数
+dist = [[0, 1, 5, float('inf')],
+        [float('inf'), 0, 2, 4],
+        [float('inf'), float('inf'), 0, 1],
+        [float('inf'), float('inf'), 7, 0]
+        ]  # dist[i][j]:i→jの重み(存在しない場合はinf, i = jの場合は0)
 
-print(warshall_floyd())
+'''
+warshall_floyd()
+> [[0, 1, 3, 4],
+   [inf, 0, 2, 3],
+   [inf, inf, 0, 1],
+   [inf, inf, 7, 0]
+   ]
+'''

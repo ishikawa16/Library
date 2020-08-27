@@ -19,3 +19,17 @@ def eratosthenes(n):
 
     # 素数列挙
     # return [i for i in range(n+1) if is_prime[i]]
+
+
+
+'''
+<素数判定>
+judge = eratosthenes(20)
+judge[13]
+> True
+
+
+<素数列挙>
+eratosthenes(20)
+> [2, 3, 5, 7, 11, 13, 17, 19]
+'''

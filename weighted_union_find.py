@@ -63,7 +63,19 @@ def diff(x, y):
     return weight(y) - weight(x)
 
 
-##############
-v = 10             # 頂点数
-par = [-1] * v     # 根:-size, 葉:親の頂点
-diff_w = [0] * v   # 根:0, 葉:親からの距離
+
+v = 6             # 頂点数
+par = [-1] * v    # 根:-size, 葉:親の頂点
+diff_w = [0] * v  # 根:0, 葉:親からの距離
+
+'''
+union(0, 1, 4)
+union(0, 3, 6)
+union(1, 4, 8)
+
+weight(4)
+> 12
+
+diff(1, 3)
+> 2
+'''

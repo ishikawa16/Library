@@ -23,13 +23,11 @@ def mod_pow(a, n):
     return res
 
 
-################################
-n = 10000
+
+n = 100000
 mod = 10 ** 9 + 7
 
-
 # nCk mod p の計算準備
-
 fact = [1]
 fact_inv = [0] * (n+1)
 for i in range(n):
@@ -37,3 +35,11 @@ for i in range(n):
 fact_inv[-1] = pow(fact[-1], mod-2, mod)
 for i in range(n-1, -1, -1):
     fact_inv[i] = fact_inv[i+1] * (i+1) % mod
+
+'''
+mod_comb_k(100000, 50000)
+> 149033233
+
+mod_pow(3, 45)
+> 644897553
+'''

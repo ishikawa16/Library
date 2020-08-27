@@ -54,13 +54,21 @@ def same(x, y):
     return find(x) == find(y)
 
 
-################################
-v, e = map(int, input().split())  # v:頂点数, e:辺の数
 
+v = 6           # 頂点数
 par = [-1] * v  # 根:-size, 葉:親の頂点
-edge = []       # edge[i]:[重み,頂点1,頂点2]
-for _ in range(e):
-    s, t, d = map(int, input().split())
-    edge.append([d, s, t])
+edge = [[1, 0, 1],
+        [3, 0, 2],
+        [1, 1, 2],
+        [7, 1, 3],
+        [1, 2, 4],
+        [3, 1, 4],
+        [1, 3, 4],
+        [1, 3, 5],
+        [6, 4, 5]
+        ]  # edge[i]:[重み,頂点1,頂点2]
 
-print(kruskal())
+'''
+kruskal()
+> 5
+'''

@@ -22,12 +22,16 @@ def bellman_ford(s):
     return dist
 
 
-################################
-v, e = map(int, input().split())  # v:頂点数, e:辺の数
 
-edge = []  # edge[i]:[始点,終点,重み]
-for _ in range(e):
-    s, t, d = map(int, input().split())
-    edge.append([s, t, d])
+v = 4  # 頂点数
+edge = [[0, 1, 2],
+        [0, 2, 3],
+        [1, 2, -5],
+        [1, 3, 1],
+        [2, 3, 2]
+        ]  # edge[i]:[始点,終点,重み]
 
-print(bellman_ford(0))
+'''
+bellman_ford(0)
+> [0, 2, -3, -1]
+'''
