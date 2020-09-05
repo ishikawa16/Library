@@ -11,7 +11,7 @@ def binary_search(key):
     Returns:
         int: 条件を満たす最小値/最大値
     """
-    ok = 6
+    ok = 5
     ng = -1
     while abs(ok - ng) > 1:
         mid = (ok + ng) // 2
@@ -38,8 +38,8 @@ def isOK(i, key):
 
 
 '''
-<使用例 (配列aにおいて要素が6以下となる最大のindexを求める)>
+<使用例 (配列aにおいて要素が5以上となる最小のindexを求める)>
 >>> a = [1, 3, 4, 6, 8, 9]
->>> binary_search(6)
+>>> binary_search(5)
 3
 '''
