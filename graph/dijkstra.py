@@ -1,13 +1,18 @@
-# Dijkstra's Algorithm
-
-from heapq import heappush, heappop
-
+import heapq
 
 def dijkstra(s):
-    '''
-    始点sから各頂点への最短距離を求める (重み付き有向グラフ)
-    O(ElogV)
-    '''
+    """ダイクストラ法 (重み付き有向グラフ) O(ElogV)
+
+    Args:
+        s (int): 始点
+    
+    Vars:
+        v (int):     頂点数
+        edge (list): 辺に関するリスト (edge[i]:iを始点に持つ辺の[重み,終点]のリスト)
+    
+    Returns:
+        list: 始点sから各頂点までの最短距離
+    """
     dist = [float('inf')] * v
     dist[s] = 0
     used = [False] * v
@@ -15,10 +20,10 @@ def dijkstra(s):
     edgelist = []
 
     for e in edge[s]:
-        heappush(edgelist, e)
+        heapq.heappush(edgelist, e)
 
     while edgelist:
-        c, n = heappop(edgelist)
+        c, n = heapq.heappop(edgelist)
         if used[n]:
             continue
         dist[n] = c
@@ -26,21 +31,21 @@ def dijkstra(s):
         for e in edge[n]:
             if used[e[1]]:
                 continue
-            heappush(edgelist, [e[0] + dist[n], e[1]])
+            heapq.heappush(edgelist, [e[0] + dist[n], e[1]])
 
     return dist
 
 
 
-v = 5  # 頂点数
-edge = [[[4, 1], [3, 2], [9, 3]],
-        [[4, 0], [9, 2]],
-        [[3, 0], [9, 1], [2, 3], [5, 4]],
-        [[9, 0], [2, 2], [1, 4]],
-        [[5, 2], [1, 3]],
-        ]  # edge[i]:iを始点に持つ辺の[重み,終点]のリスト
-
 '''
-dijkstra(0)
-> [0, 4, 3, 5, 6]
+<使用例>
+>>> v = 5
+>>> edge = [[[4, 1], [3, 2], [9, 3]],
+            [[4, 0], [9, 2]],
+            [[3, 0], [9, 1], [2, 3], [5, 4]],
+            [[9, 0], [2, 2], [1, 4]],
+            [[5, 2], [1, 3]],
+            ]
+>>> dijkstra(0)
+[0, 4, 3, 5, 6]
 '''

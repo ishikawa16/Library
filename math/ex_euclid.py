@@ -1,10 +1,13 @@
-# Ex_Euclidean Algorithm
-
 def ex_gcd(a, b):
-    '''
-    ax + by = gcd(a, b) の整数解を求める
-    O(loga)
-    '''
+    """拡張ユークリッドの互除法 O(loga)
+
+    Args:
+        a (int): 対象の値
+        b (int): 対象の値
+    
+    Returns:
+        tuple: ax + by = gcd(a, b) の整数解
+    """
     if b == 0:
         return 1, 0
     else:
@@ -14,6 +17,7 @@ def ex_gcd(a, b):
 
 
 '''
-ex_gcd(4, 12)
-> (1, 0)
+<使用例>
+>>> ex_gcd(4, 12)
+(1, 0)
 '''

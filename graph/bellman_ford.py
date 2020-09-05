@@ -1,10 +1,16 @@
-# Bellman-Ford Algorithm
-
 def bellman_ford(s):
-    '''
-    始点sから各頂点への最短距離を求める (重み付き有向グラフ)
-    O(VE)
-    '''
+    """ベルマンフォード法 (重み付き有向グラフ) O(VE)
+
+    Args:
+        s (int): 始点
+    
+    Vars:
+        v (int):     頂点数
+        edge (list): 辺に関するリスト (edge[i]:[始点,終点,重み])
+    
+    Returns:
+        list/bool: 始点sから各頂点までの最短距離 (負閉路が存在する場合はFalse)
+    """
     dist = [float('inf')] * v
     dist[s] = 0
 
@@ -16,22 +22,22 @@ def bellman_ford(s):
                 update = True
         if not update:
             break
-        if i == v - 1:  # 負閉路が存在する場合はFalseを返す
+        if i == v - 1:
             return False
 
     return dist
 
 
 
-v = 4  # 頂点数
-edge = [[0, 1, 2],
-        [0, 2, 3],
-        [1, 2, -5],
-        [1, 3, 1],
-        [2, 3, 2]
-        ]  # edge[i]:[始点,終点,重み]
-
 '''
-bellman_ford(0)
-> [0, 2, -3, -1]
+<使用例>
+>>> v = 4
+>>> edge = [[0, 1, 2],
+            [0, 2, 3],
+            [1, 2, -5],
+            [1, 3, 1],
+            [2, 3, 2]
+            ]
+>>> bellman_ford(0)
+[0, 2, -3, -1]
 '''

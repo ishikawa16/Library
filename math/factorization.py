@@ -1,10 +1,12 @@
-# Prime Factorization
-
 def factorization(n):
-    '''
-    素因数分解
-    O(√N)
-    '''
+    """素因数分解 O(√N)
+
+    Args:
+        n (int): 対象の値
+    
+    Returns:
+        list: 素因数とその個数の組み合わせの列挙
+    """
     res = []
     m = 2
     while m ** 2 <= n:
@@ -24,6 +26,7 @@ def factorization(n):
 
 
 '''
-factorization(24)
-> [[2, 3], [3, 1]]
+<使用例>
+>>> factorization(24)
+[[2, 3], [3, 1]]
 '''

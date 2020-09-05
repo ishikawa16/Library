@@ -1,11 +1,15 @@
 class BinaryIndexedTree:
-    """
-    BIT: Binary Indexed Tree
-    """
+    """BIT: Binary Indexed Tree
 
+    Attributes:
+        n (int):     要素数
+        data (list): 要素の格納先 (1-indexed)
+    """
     def __init__(self, a):
-        """
-        配列aで初期化
+        """初期化
+    
+        Args:
+            a (list): 対象の配列
         """
         self.n = len(a)
         self.data = [0] * (self.n + 1)
@@ -13,9 +17,13 @@ class BinaryIndexedTree:
             self.update(i+1, v)
 
     def query(self, i):
-        """
-        a[0] + a[1] + … + a[i-1] を求める
-        O(logN)
+        """区間和の計算 O(logN)
+
+        Args:
+            i (int): 区間の右端のindex
+        
+        Returns:
+            int: [0, i)の区間和
         """
         res = 0
         while i > 0:
@@ -25,9 +33,11 @@ class BinaryIndexedTree:
         return res
 
     def update(self, i, v):
-        """
-        a[i-1]にvを加算
-        O(logN)
+        """値の更新 O(logN)
+
+        Args:
+            i (int): 加算対象のindex+1
+            v (int): 加算値
         """
         while i <= self.n:
             self.data[i] += v
@@ -37,12 +47,11 @@ class BinaryIndexedTree:
 
 '''
 <使用例>
-
 >>> a = [1, 3, 5, 2, 6, 4]
->>> BIT = BinaryIndexedTree(a)
->>> BIT.query(5)
+>>> bit = BinaryIndexedTree(a)
+>>> bit.query(5)
 17
->>> BIT.update(3, 2)
->>> BIT.query(5)
+>>> bit.update(3, 2)
+>>> bit.query(5)
 19
 '''

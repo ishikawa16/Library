@@ -1,17 +1,22 @@
 class SegmentTree:
-    """
-    Segment Tree
-    """
+    """Segment Tree
 
+    Attributes:
+        n (int):       要素数
+        num (int):     n以上の最小の2の累乗
+        ide_ele (int): 単位元
+            - RmQ(Range Minimum Query): inf
+            - RMQ(Range Maximum Query): -1
+            - RSQ(Range Sum Query):     0
+            - RPQ(Range Product Query): 1
+            - RGQ(Range GCD Query):     0
+        seg (list):    要素の格納先
+    """
     def __init__(self, a):
-        """
-        配列aで初期化
-        ide_ele:単位元
-            - RmQ(Range Minimum Query) → inf
-            - RMQ(Range Maximum Query) → -1
-            - RSQ(Range Sum Query)     → 0
-            - RPQ(Range Product Query) → 1
-            - RGQ(Range GCD Query)     → 0
+        """初期化
+        
+        Args:
+            a (list): 対象の配列
         """
         self.n = len(a)
         self.num = (2 ** len(bin(self.n - 1)) - 2)
@@ -24,20 +29,27 @@ class SegmentTree:
             self.seg[i] = self.segfunc(self.seg[2*i+1], self.seg[2*i+2])
 
     def segfunc(self, x, y):
-        """
-        問題に応じて返り値を設定
-            - RmQ(Range Minimum Query) → min(x, y)
-            - RMQ(Range Maximum Query) → max(x, y)
-            - RSQ(Range Sum Query)     → x + y
-            - RPQ(Range Product Query) → x * y
-            - RGQ(Range GCD Query)     → gcd(x, y)
+        """問題に応じた処理
+
+        Returns:
+            int: 問題に応じた値
+                - RmQ(Range Minimum Query): min(x, y)
+                - RMQ(Range Maximum Query): max(x, y)
+                - RSQ(Range Sum Query):     x + y
+                - RPQ(Range Product Query): x * y
+                - RGQ(Range GCD Query):     gcd(x, y)
         """
         return min(x, y)
 
     def query(self, l, r):
-        """
-        [l, r)についてsegfuncを適用したものを求める
-        O(logN)
+        """区間クエリの計算 O(logN)
+
+        Args:
+            l (int): 区間の左端
+            r (int): 区間の右端
+        
+        Returns:
+            int: [l, r)についての区間クエリ
         """
         if r <= l:
             return self.ide_ele
@@ -63,9 +75,11 @@ class SegmentTree:
         return res
 
     def update(self, i, v):
-        """
-        a[i]の値をvに更新
-        O(logN)
+        """値の更新 O(logN)
+
+        Args:
+            i (int): 更新対象のindex
+            v (int): 更新値
         """
         i += self.num - 1
         self.seg[i] = v
@@ -77,7 +91,6 @@ class SegmentTree:
 
 '''
 <使用例(最小値セグ木)>
-
 >>> a = [3, 1, 7, 4, 9, 2]
 >>> st = SegmentTree(a)
 >>> st.query(1, 4)

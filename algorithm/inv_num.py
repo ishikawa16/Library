@@ -1,65 +1,93 @@
-# Inversion Number
-
-from bisect import bisect_left
-
+import bisect
 
 def inv_num(a):
-    '''
-    配列の転倒数を求める
-    O(NlogN)
-    '''
+    """転倒数 O(NlogN)
+
+    Args:
+        a (list): 対象の配列
+
+    Returns:
+        int: 配列aの転倒数
+    """
     a = compress(a)
+    bit = BinaryIndexedTree([0] * len(a))
 
     res = 0
     for i, v in enumerate(a):
-        res += i - query(v+1)
-        update(v+1, 1)
+        res += i - bit.query(v+1)
+        bit.update(v+1, 1)
     
     return res
 
 
-def query(i):
-    '''
-    a[0] + a[1] + … + a[i-1] を求める
-    O(logN)
-    '''
-    res = 0
-    while i > 0:
-        res += BIT[i]
-        i -= i & -i
+# inv_numの実行に必要なクラス/関数
+
+class BinaryIndexedTree:
+    """BIT: Binary Indexed Tree
+
+    Attributes:
+        n (int):     要素数
+        data (list): 要素の格納先 (1-indexed)
+    """
+    def __init__(self, a):
+        """初期化
     
-    return res
+        Args:
+            a (list): 対象の配列
+        """
+        self.n = len(a)
+        self.data = [0] * (self.n + 1)
+        for i, v in enumerate(a):
+            self.update(i+1, v)
 
+    def query(self, i):
+        """区間和の計算 O(logN)
 
-def update(i, x):
-    '''
-    a[i-1]にxを加算
-    O(logN)
-    '''
-    while i <= n:
-        BIT[i] += x
-        i += i & -i
+        Args:
+            i (int): 区間の右端のindex
+        
+        Returns:
+            int: [0, i)の区間和
+        """
+        res = 0
+        while i > 0:
+            res += self.data[i]
+            i -= i & -i
+        
+        return res
 
+    def update(self, i, v):
+        """値の更新 O(logN)
+
+        Args:
+            i (int): 加算対象のindex+1
+            v (int): 加算値
+        """
+        while i <= self.n:
+            self.data[i] += v
+            i += i & -i
 
 def compress(a):
-    '''
-    配列の大小関係を抽出する(1次元圧縮)
-    O(NlogN)
-    '''
+    """1次元座標圧縮 (大小関係の抽出) O(NlogN)
+
+    Args:
+        a (list): 対象の配列
+    
+    Returns:
+        list: 圧縮済みの配列
+    """
     tmp = sorted(list(set(a)))
     res = []
     for v in a:
-        res.append(bisect_left(tmp, v))
+        res.append(bisect.bisect_left(tmp, v))
     
     return res
 
 
 
-n = 5  # 要素数
-a = [3, 1, 5, 4, 2]
-BIT = [0] * (n+1)
-
 '''
-inv_num(a)
-> 5
+<使用例>
+>>> a = [3, 1, 5, 4, 2]
+>>> inv_num(a)
+5
 '''

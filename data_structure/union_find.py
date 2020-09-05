@@ -1,19 +1,27 @@
 class UnionFindTree:
-    """
-    Union-Find Tree
-    """
+    """Union-Find Tree
 
+    Attributes:
+        v (int):    頂点数
+        par (list): 要素の格納先
+    """
     def __init__(self, v):
-        """
-        頂点数vで初期化
+        """初期化
+
+        Args:
+            v (int): 頂点数
         """
         self.v = v
         self.par = [-1] * self.v
 
     def find(self, x):
-        """
-        xの根を求める
-        O(α(N))
+        """要素の検索 O(α(N))
+
+        Args:
+            x (int): 対象要素
+
+        Returns:
+            int: xの根
         """
         if self.par[x] < 0:
             return x
@@ -23,8 +31,11 @@ class UnionFindTree:
 
 
     def union(self, x, y):
-        """
-        xとyの属する集合を併合する
+        """要素の併合 O(1)
+
+        Args:
+            x (int): 併合対象の集合に属する要素
+            y (int): 併合対象の集合に属する要素
         """
         x = self.find(x)
         y = self.find(y)
@@ -38,23 +49,33 @@ class UnionFindTree:
         self.par[x] += self.par[y]
         self.par[y] = x
 
-    def size(self, x):
-        """
-        xが属する集合の個数を求める
-        """
-        return -self.par[self.find(x)]
-
     def same(self, x, y):
-        """
-        xとyが同じ集合に属するかを判定する
+        """要素の判定 O(1)
+
+        Args:
+            x (int): 判定対象の要素
+            y (int): 判定対象の要素
+
+        Returns:
+            bool: xとyが同じ集合に属するか否か
         """
         return self.find(x) == self.find(y)
+    
+    def size(self, x):
+        """要素数の計算 O(1)
+
+        Args:
+            x (int): 対象要素
+
+        Returns:
+            int: xが属する集合の要素数
+        """
+        return -self.par[self.find(x)]
 
 
 
 '''
 <使用例>
-
 >>> uf = UnionFindTree(6)
 >>> uf.union(0, 1)
 >>> uf.union(0, 3)
