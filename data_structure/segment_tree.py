@@ -19,9 +19,9 @@ class SegmentTree:
             a (list): 対象の配列
         """
         self.n = len(a)
-        self.num = (2 ** len(bin(self.n - 1)) - 2)
+        self.num = 2 ** (self.n - 1).bit_length()
         self.ide_ele = float('inf')
-        self.seg = [self.ide_ele] * (2 * self.num)
+        self.seg = [self.ide_ele] * (2*self.num)
 
         for i in range(self.n):
             self.seg[self.num+i-1] = a[i]    
