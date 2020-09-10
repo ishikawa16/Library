@@ -23,7 +23,6 @@ def kruskal():
 
 
 # kruskalの実行に必要なクラス
-
 class UnionFindTree:
     """Union-Find Tree
 
@@ -99,11 +98,10 @@ class UnionFindTree:
         return -self.par[self.find(x)]
 
 
-
-'''
-<使用例>
->>> v = 6
->>> edge = [[1, 0, 1],
+# Driver Code
+if __name__ == "__main__":
+    v = 6
+    edge = [[1, 0, 1],
             [3, 0, 2],
             [1, 1, 2],
             [7, 1, 3],
@@ -113,6 +111,4 @@ class UnionFindTree:
             [1, 3, 5],
             [6, 4, 5]
             ]
->>> kruskal()
-5
-'''
+    print(kruskal())

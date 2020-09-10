@@ -21,7 +21,6 @@ def inv_num(a):
 
 
 # inv_numの実行に必要なクラス/関数
-
 class BinaryIndexedTree:
     """BIT: Binary Indexed Tree
 
@@ -84,10 +83,7 @@ def compress(a):
     return res
 
 
-
-'''
-<使用例>
->>> a = [3, 1, 5, 4, 2]
->>> inv_num(a)
-5
-'''
+# Driver Code
+if __name__ == "__main__":
+    a = [3, 1, 5, 4, 2]
+    print(inv_num(a))

@@ -28,16 +28,13 @@ def bellman_ford(s):
     return dist
 
 
-
-'''
-<使用例>
->>> v = 4
->>> edge = [[0, 1, 2],
+# Driver Code
+if __name__ == "__main__":
+    v = 4
+    edge = [[0, 1, 2],
             [0, 2, 3],
             [1, 2, -5],
             [1, 3, 1],
             [2, 3, 2]
             ]
->>> bellman_ford(0)
-[0, 2, -3, -1]
-'''
+    print(bellman_ford(0))

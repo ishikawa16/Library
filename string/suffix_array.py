@@ -112,21 +112,20 @@ class SuffixArray:
             return -1 if rank_ik < rank_jk else 1
 
 
+# Driver Code
+if __name__ == "__main__":
+    s = 'abracadabra'
+    
+    sa = SuffixArray(s)
 
-'''
-<使用例>
->>> s = 'abracadabra'
->>> sa = SuffixArray(s)
->>> sa.build_sa()
->>> sa.get_sa()
-[11, 10, 7, 0, 3, 5, 8, 1, 4, 6, 9, 2]
->>> sa.build_lcp()
->>> sa.get_lcp()
-[0, 1, 4, 1, 1, 0, 3, 0, 0, 0, 2]
->>> t = 'racad'
->>> sa.is_contain(t)
-True
->>> t = 'racab'
->>> sa.is_contain(t)
-False
-'''
+    sa.build_sa()
+    print(sa.get_sa())
+
+    sa.build_lcp()
+    print(sa.get_lcp())
+
+    t = 'racad'
+    print(sa.is_contain(t))
+
+    t = 'racab'
+    print(sa.is_contain(t))

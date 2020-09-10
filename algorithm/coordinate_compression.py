@@ -17,10 +17,7 @@ def compress(a):
     return res
 
 
-
-'''
-<使用例>
->>> a = [1, 4, 3, 4, 8, 6]
->>> compress(a)
-[0, 2, 1, 2, 4, 3]
-'''
+# Driver Code
+if __name__ == "__main__":
+    a = [1, 4, 3, 4, 8, 6]
+    print(compress(a))

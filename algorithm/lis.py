@@ -19,10 +19,7 @@ def lis(a):
     return len(l)
 
 
-
-'''
-<使用例>
->>> a = [1, 5, 3, 6, 2, 4, 8, 7]
->>> lis(a)
-4
-'''
+# Driver Code
+if __name__ == "__main__":
+    a = [1, 5, 3, 6, 2, 4, 8, 7]
+    print(lis(a))

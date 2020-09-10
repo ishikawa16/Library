@@ -75,18 +75,15 @@ class ExtBIT:
         return high
 
 
+# Driver Code
+if __name__ == "__main__":
+    bit = ExtBIT(10)
 
-'''
-<使用例>
->>> bit = ExtBIT(10)
->>> bit.add(3)
->>> bit.add(1)
->>> bit.add(5)
->>> bit.get(2)
-3
->>> bit.search(5)
-3
->>> bit.remove(3)
->>> bit.get(2)
-5
-'''
+    bit.add(3)
+    bit.add(1)
+    bit.add(5)
+    print(bit.get(2))
+    print(bit.search(5))
+    
+    bit.remove(3)
+    print(bit.get(2))

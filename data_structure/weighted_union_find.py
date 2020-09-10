@@ -104,15 +104,12 @@ class WeightedUnionFindTree:
         return self.weight(y) - self.weight(x)
 
 
-
-'''
-<使用例>
->>> uf = WeightedUnionFindTree(6)
->>> uf.union(0, 1, 4)
->>> uf.union(0, 3, 6)
->>> uf.union(1, 4, 8)
->>> uf.weight(4)
-12
->>> uf.diff(1, 3)
-2
-'''
+# Driver Code
+if __name__ == "__main__":
+    uf = WeightedUnionFindTree(6)
+    
+    uf.union(0, 1, 4)
+    uf.union(0, 3, 6)
+    uf.union(1, 4, 8)
+    print(uf.weight(4))
+    print(uf.diff(1, 3))

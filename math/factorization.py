@@ -24,9 +24,6 @@ def factorization(n):
     return res
 
 
-
-'''
-<使用例>
->>> factorization(24)
-[[2, 3], [3, 1]]
-'''
+# Driver Code
+if __name__ == "__main__":
+    print(factorization(24))

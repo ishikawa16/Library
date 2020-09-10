@@ -73,17 +73,13 @@ class UnionFindTree:
         return -self.par[self.find(x)]
 
 
+# Driver Code
+if __name__ == "__main__":
+    uf = UnionFindTree(6)
 
-'''
-<使用例>
->>> uf = UnionFindTree(6)
->>> uf.union(0, 1)
->>> uf.union(0, 3)
->>> uf.union(1, 4)
->>> uf.find(3)
-0
->>> uf.size(1)
-4
->>> uf.same(1, 3)
-True
-'''
+    uf.union(0, 1)
+    uf.union(0, 3)
+    uf.union(1, 4)
+    print(uf.find(3))
+    print(uf.size(1))
+    print(uf.same(1, 3))

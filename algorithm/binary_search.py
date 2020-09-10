@@ -36,10 +36,7 @@ def isOK(i, key):
     return a[i] >= key
 
 
-
-'''
-<使用例 (配列aにおいて要素が5以上となる最小のindexを求める)>
->>> a = [1, 3, 4, 6, 8, 9]
->>> binary_search(5)
-3
-'''
+# Driver Code
+if __name__ == "__main__":
+    a = [1, 3, 4, 6, 8, 9]
+    print(binary_search(5))

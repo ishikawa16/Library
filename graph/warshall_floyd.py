@@ -16,19 +16,12 @@ def warshall_floyd():
     return dist
 
 
-
-'''
-<使用例>
->>> v = 4
->>> dist = [[0, 1, 5, float('inf')],
+# Driver Code
+if __name__ == "__main__":
+    v = 4
+    dist = [[0, 1, 5, float('inf')],
             [float('inf'), 0, 2, 4],
             [float('inf'), float('inf'), 0, 1],
             [float('inf'), float('inf'), 7, 0]
             ]
->>> warshall_floyd()
-[[0, 1, 3, 4],
- [inf, 0, 2, 3],
- [inf, inf, 0, 1],
- [inf, inf, 7, 0]
- ]
-'''
+    print(warshall_floyd())

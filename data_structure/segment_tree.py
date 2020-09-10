@@ -88,14 +88,13 @@ class SegmentTree:
             self.seg[i] = self.segfunc(self.seg[i*2+1], self.seg[i*2+2])
 
 
-
-'''
-<使用例(最小値セグ木)>
->>> a = [3, 1, 7, 4, 9, 2]
->>> st = SegmentTree(a)
->>> st.query(1, 4)
-1
->>> st.update(1, 6)
->>> st.query(1, 4)
-4
-'''
+# Driver Code
+if __name__ == "__main__":
+    a = [3, 1, 7, 4, 9, 2]
+    
+    st = SegmentTree(a)
+    
+    print(st.query(1, 4))
+    
+    st.update(1, 6)
+    print(st.query(1, 4))

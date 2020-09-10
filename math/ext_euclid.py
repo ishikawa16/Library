@@ -15,9 +15,6 @@ def ex_gcd(a, b):
         return y, x - (a // b) * y
 
 
-
-'''
-<使用例>
->>> ex_gcd(4, 12)
-(1, 0)
-'''
+# Driver Code
+if __name__ == "__main__":
+    print(ex_gcd(4, 12))

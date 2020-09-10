@@ -44,14 +44,13 @@ class BinaryIndexedTree:
             i += i & -i
 
 
+# Driver Code
+if __name__ == "__main__":
+    a = [1, 3, 5, 2, 6, 4]
+    
+    bit = BinaryIndexedTree(a)
+    
+    print(bit.query(5))
 
-'''
-<使用例>
->>> a = [1, 3, 5, 2, 6, 4]
->>> bit = BinaryIndexedTree(a)
->>> bit.query(5)
-17
->>> bit.update(3, 2)
->>> bit.query(5)
-19
-'''
+    bit.update(3, 2)
+    print(bit.query(5))

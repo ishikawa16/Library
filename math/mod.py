@@ -48,15 +48,15 @@ def com_init(n, p):
         fact_inv[i] = fact_inv[i+1] * (i+1) % p
 
 
+# Driver Code
+if __name__ == "__main__":
+    max_n = 10000
+    mod = 10 ** 9 + 7
 
-'''
-<使用例>
->>> fact = [1]
->>> fact_inv = [0] * (1000+1)
->>> mod = 10 ** 9 + 7
->>> com_init(1000, mod)
->>> mod_comb_k(1000, 500, mod)
-159835829
->>> mod_pow(3, 45, mod)
-644897553
-'''
+    fact = [1]
+    fact_inv = [0] * (max_n+1)
+
+    com_init(max_n, mod)
+
+    print(mod_comb_k(1000, 500, mod))
+    print(mod_pow(3, 45, mod))

@@ -31,10 +31,7 @@ def z_algo(s):
     return z
 
 
-
-'''
-<使用例>
->>> s = 'abracadabra'
->>> z_algo(s)
-[11, 0, 0, 1, 0, 1, 0, 4, 0, 0, 1]
-'''
+# Driver Code
+if __name__ == "__main__":
+    s = 'abracadabra'
+    print(z_algo(s))

@@ -28,19 +28,6 @@ def eratosthenes(n):
     return is_prime
 
 
-
-'''
-<使用例(素数判定)>
->>> eratosthenes(10)
-[False, False, True, True, False, True, False, True, False, False, False]
-
-
-<使用例(素数列挙)>
->>> eratosthenes(10)
-[2, 3, 5, 7]
-
-
-<使用例(最小素因数列挙)>
->>> eratostenes(10)
-[0, 1, 2, 3, 2, 5, 2, 7, 2, 3, 2]
-'''
+# Driver Code
+if __name__ == "__main__":
+    print(eratosthenes(10))

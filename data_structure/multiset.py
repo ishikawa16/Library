@@ -74,18 +74,15 @@ class MultiSet:
             return False
 
 
+# Driver Code
+if __name__ == "__main__":
+    ms = MultiSet()
 
-'''
-<使い方>
->>> ms = MultiSet()
->>> ms.add(3)
->>> ms.add(1)
->>> ms.add(5)
->>> ms.get_min()
-1
->>> ms.remove(1)
->>> ms.isexist(1)
-False
->>> ms.get_min()
-3
-'''
+    ms.add(3)
+    ms.add(1)
+    ms.add(5)
+    print(ms.get_min())
+
+    ms.remove(1)
+    print(ms.is_exist(1))
+    print(ms.get_min())
