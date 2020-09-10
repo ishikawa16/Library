@@ -5,7 +5,7 @@ def z_algo(s):
         s (str): 対象文字列
     
     Returns:
-        list: lcp配列 (z[i]: sとs[i:]の最長共通接尾辞の長さ)
+        list: LCP配列 (z[i]: sとs[i:]の最長共通接尾辞の長さ)
     """
     n = len(s)
     z = [0] * n
