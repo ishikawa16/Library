@@ -1,7 +1,7 @@
 # Python Library for Competitive Programming
 競技プログラミング用のPythonライブラリ
 ### Algorithm
-- LIS.py
+- [LIS.py](algorithm/LIS.py)
 - binary_search.py
 - coodinate_compression.py
 - inv_num.py
