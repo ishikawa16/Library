@@ -6,7 +6,7 @@ class BinaryIndexedTree:
         data (list): 要素の格納先 (1-indexed)
     """
     def __init__(self, a):
-        """初期化
+        """初期化 O(NlogN)
     
         Args:
             a (list): 対象の配列

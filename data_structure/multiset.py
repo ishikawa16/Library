@@ -8,7 +8,7 @@ class MultiSet:
         h (list): 要素を格納する優先度付きキュー
     """
     def __init__(self):
-        """初期化
+        """初期化 O(1)
         """
         self.d = dict()
         self.h = []

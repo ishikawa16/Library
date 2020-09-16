@@ -6,7 +6,7 @@ class ExtBIT:
         data (list): 要素の格納先 (1-indexed)
     """
     def __init__(self, max):
-        """初期化
+        """初期化 O(1)
 
         Args:
             max (int): 要素の上限値

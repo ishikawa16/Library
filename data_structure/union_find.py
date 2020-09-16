@@ -6,7 +6,7 @@ class UnionFindTree:
         par (list): 要素の格納先
     """
     def __init__(self, v):
-        """初期化
+        """初期化 O(1)
 
         Args:
             v (int): 頂点数

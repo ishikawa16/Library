@@ -13,7 +13,7 @@ class SegmentTree:
         seg (list):    要素の格納先
     """
     def __init__(self, a):
-        """初期化
+        """初期化 O(N)
         
         Args:
             a (list): 対象の配列
@@ -26,20 +26,7 @@ class SegmentTree:
         for i in range(self.n):
             self.seg[self.num+i-1] = a[i]    
         for i in range(self.num-2, -1, -1) :
-            self.seg[i] = self.segfunc(self.seg[2*i+1], self.seg[2*i+2])
-
-    def segfunc(self, x, y):
-        """問題に応じた処理
-
-        Returns:
-            int: 問題に応じた値
-                - RmQ(Range Minimum Query): min(x, y)
-                - RMQ(Range Maximum Query): max(x, y)
-                - RSQ(Range Sum Query):     x + y
-                - RPQ(Range Product Query): x * y
-                - RGQ(Range GCD Query):     gcd(x, y)
-        """
-        return min(x, y)
+            self.seg[i] = self.st_func(self.seg[2*i+1], self.seg[2*i+2])
 
     def query(self, l, r):
         """区間クエリの計算 O(logN)
@@ -60,17 +47,17 @@ class SegmentTree:
 
         while r - l > 1:
             if l & 1 == 0:
-                res = self.segfunc(res, self.seg[l])
+                res = self.st_func(res, self.seg[l])
             if r & 1 == 1:
-                res = self.segfunc(res, self.seg[r])
+                res = self.st_func(res, self.seg[r])
                 r -= 1
             l = l // 2
             r = (r - 1) // 2
         
         if l == r:
-            res = self.segfunc(res, self.seg[l])
+            res = self.st_func(res, self.seg[l])
         else:
-            res = self.segfunc(res, self.segfunc(self.seg[l], self.seg[r]))
+            res = self.st_func(res, self.st_func(self.seg[l], self.seg[r]))
         
         return res
 
@@ -85,16 +72,29 @@ class SegmentTree:
         self.seg[i] = v
         while i:
             i = (i - 1) // 2
-            self.seg[i] = self.segfunc(self.seg[i*2+1], self.seg[i*2+2])
+            self.seg[i] = self.st_func(self.seg[i*2+1], self.seg[i*2+2])
+    
+    def st_func(self, x, y):
+        """問題に応じた処理
+
+        Returns:
+            int: 問題に応じた値
+                - RmQ(Range Minimum Query): min(x, y)
+                - RMQ(Range Maximum Query): max(x, y)
+                - RSQ(Range Sum Query):     x + y
+                - RPQ(Range Product Query): x * y
+                - RGQ(Range GCD Query):     gcd(x, y)
+        """
+        return min(x, y)
 
 
 # Driver Code
 if __name__ == "__main__":
-    a = [3, 1, 7, 4, 9, 2]
+    a = [2, 5, 3, 8, 7, 0, 9, 1, 6, 4]
     
     st = SegmentTree(a)
     
-    print(st.query(1, 4))
+    print(st.query(1, 7))
     
-    st.update(1, 6)
-    print(st.query(1, 4))
+    st.update(5, 4)
+    print(st.query(1, 7))

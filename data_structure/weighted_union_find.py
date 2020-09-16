@@ -7,7 +7,7 @@ class WeightedUnionFindTree:
         diff_w (list): 親要素との値の差分
     """
     def __init__(self, v):
-        """初期化
+        """初期化 O(1)
 
         Args:
             v (int): 頂点数

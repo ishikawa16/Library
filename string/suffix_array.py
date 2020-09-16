@@ -12,7 +12,7 @@ class SuffixArray:
         lcp (list):      LCP配列
     """
     def __init__(self, s):
-        """初期化
+        """初期化 O(N)
 
         Args:
             s (str): 対象文字列
