@@ -5,11 +5,11 @@ class SegmentTree:
         n (int):       要素数
         num (int):     n以上の最小の2の累乗
         ide_ele (int): 単位元
-            - RmQ(Range Minimum Query): inf
-            - RMQ(Range Maximum Query): -1
-            - RSQ(Range Sum Query):     0
-            - RPQ(Range Product Query): 1
-            - RGQ(Range GCD Query):     0
+            - RmQ (Range Minimum Query): inf
+            - RMQ (Range Maximum Query): -1
+            - RSQ (Range Sum Query):     0
+            - RPQ (Range Product Query): 1
+            - RGQ (Range GCD Query):     0
         seg (list):    要素の格納先
     """
     def __init__(self, a):
