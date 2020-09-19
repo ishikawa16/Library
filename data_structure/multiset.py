@@ -11,7 +11,8 @@ class MultiSet:
         """初期化 O(1)
         """
         self.d = dict()
-        self.h = []
+        self.min_h = []
+        self.max_h = []
 
     def add(self, v):
         """要素の追加 O(logN)
@@ -24,7 +25,8 @@ class MultiSet:
         else:
             self.d[v] += 1
         
-        heapq.heappush(self.h, v)
+        heapq.heappush(self.min_h, v)
+        heapq.heappush(self.max_h, -v)
 
     def remove(self, v):
         """要素の削除 O(logN)
@@ -40,9 +42,15 @@ class MultiSet:
         else:
             return False
 
-        while len(self.h) > 0:
-            if self.d[self.h[0]] == 0:
-                heapq.heappop(self.h)
+        while len(self.min_h) > 0:
+            if self.d[self.min_h[0]] == 0:
+                heapq.heappop(self.min_h)
+            else:
+                break
+        
+        while len(self.max_h) > 0:
+            if self.d[-self.max_h[0]] == 0:
+                heapq.heappop(self.max_h)
             else:
                 break
         
@@ -68,8 +76,19 @@ class MultiSet:
         Returns:
             int/bool: 最小値 (集合が空の場合はFalse)
         """
-        if len(self.h) > 0:
-            return self.h[0]
+        if len(self.min_h) > 0:
+            return self.min_h[0]
+        else:
+            return False
+    
+    def get_max(self):
+        """最大値の取得 O(1)
+
+        Returns:
+            int/bool: 最大値 (集合が空の場合はFalse)
+        """
+        if len(self.max_h) > 0:
+            return -self.max_h[0]
         else:
             return False
 
@@ -81,7 +100,11 @@ if __name__ == "__main__":
     ms.add(3)
     ms.add(1)
     ms.add(5)
+    ms.add(2)
+    ms.add(4)
+    print(ms.is_exist(1))
     print(ms.get_min())
+    print(ms.get_max())
 
     ms.remove(1)
     print(ms.is_exist(1))
