@@ -21,7 +21,7 @@ class SegmentTree:
         self.n = len(a)
         self.num = 2 ** (self.n - 1).bit_length()
         self.ide_ele = float('inf')
-        self.seg = [self.ide_ele] * (2*self.num)
+        self.seg = [self.ide_ele] * (2*self.num-1)
 
         for i in range(self.n):
             self.seg[self.num+i-1] = a[i]    
@@ -46,9 +46,9 @@ class SegmentTree:
         res = self.ide_ele
 
         while r - l > 1:
-            if l & 1 == 0:
+            if l % 2 == 0:
                 res = self.st_func(res, self.seg[l])
-            if r & 1 == 1:
+            if r % 2 == 1:
                 res = self.st_func(res, self.seg[r])
                 r -= 1
             l = l // 2
@@ -70,7 +70,7 @@ class SegmentTree:
         """
         i += self.num - 1
         self.seg[i] = v
-        while i:
+        while i > 0:
             i = (i - 1) // 2
             self.seg[i] = self.st_func(self.seg[i*2+1], self.seg[i*2+2])
     
