@@ -5,18 +5,16 @@ class BinaryIndexedTree:
         n (int):     要素数
         data (list): 要素の格納先 (1-indexed)
     """
-    def __init__(self, a):
-        """初期化 O(NlogN)
+    def __init__(self, n):
+        """初期化 O(1)
     
         Args:
-            a (list): 対象の配列
+            n (int): 要素数
         """
-        self.n = len(a)
-        self.data = [0] * (self.n + 1)
-        for i, v in enumerate(a):
-            self.update(i+1, v)
+        self.n = n
+        self.data = [0] * (n+1)
 
-    def query(self, i):
+    def sum(self, i):
         """区間和の計算 O(logN)
 
         Args:
@@ -32,7 +30,7 @@ class BinaryIndexedTree:
         
         return res
 
-    def update(self, i, v):
+    def add(self, i, v):
         """値の更新 O(logN)
 
         Args:
@@ -46,11 +44,15 @@ class BinaryIndexedTree:
 
 # Driver Code
 if __name__ == "__main__":
-    a = [1, 3, 5, 2, 6, 4]
-    
-    bit = BinaryIndexedTree(a)
-    
-    print(bit.query(5))
+    bit = BinaryIndexedTree(5)
 
-    bit.update(3, 2)
-    print(bit.query(5))
+    bit.add(1, 7)      # [7, 0, 0, 0, 0]
+    bit.add(2, 2)      # [7, 2, 0, 0, 0]
+    bit.add(3, 5)      # [7, 2, 5, 0, 0]
+    bit.add(4, 1)      # [7, 2, 5, 1, 0]
+    bit.add(5, 4)      # [7, 2, 5, 1, 4]
+    print(bit.sum(3))
+    print(bit.sum(5))
+
+    bit.add(2, 7)      # [7, 9, 5, 1, 4]
+    print(bit.sum(5))
