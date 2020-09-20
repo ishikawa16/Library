@@ -78,8 +78,14 @@ if __name__ == "__main__":
     uf = UnionFindTree(6)
 
     uf.union(0, 1)
+    uf.union(2, 5)
     uf.union(0, 3)
     uf.union(1, 4)
     print(uf.find(3))
+    # 0
     print(uf.size(1))
+    # 4
     print(uf.same(1, 3))
+    # True
+    print(uf.same(0, 2))
+    # False

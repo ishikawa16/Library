@@ -10,12 +10,12 @@ def inv_num(a):
         int: 配列aの転倒数
     """
     a = compress(a)
-    bit = BinaryIndexedTree([0] * len(a))
+    bit = BinaryIndexedTree(len(a))
 
     res = 0
     for i, v in enumerate(a):
-        res += i - bit.query(v+1)
-        bit.update(v+1, 1)
+        res += i - bit.sum(v+1)
+        bit.add(v+1, 1)
     
     return res
 
@@ -28,18 +28,16 @@ class BinaryIndexedTree:
         n (int):     要素数
         data (list): 要素の格納先 (1-indexed)
     """
-    def __init__(self, a):
-        """初期化 O(NlogN)
+    def __init__(self, n):
+        """初期化 O(1)
     
         Args:
-            a (list): 対象の配列
+            n (int): 要素数
         """
-        self.n = len(a)
-        self.data = [0] * (self.n + 1)
-        for i, v in enumerate(a):
-            self.update(i+1, v)
+        self.n = n
+        self.data = [0] * (n+1)
 
-    def query(self, i):
+    def sum(self, i):
         """区間和の計算 O(logN)
 
         Args:
@@ -55,7 +53,7 @@ class BinaryIndexedTree:
         
         return res
 
-    def update(self, i, v):
+    def add(self, i, v):
         """値の更新 O(logN)
 
         Args:
@@ -87,3 +85,4 @@ def compress(a):
 if __name__ == "__main__":
     a = [3, 1, 5, 4, 2]
     print(inv_num(a))
+    # 5

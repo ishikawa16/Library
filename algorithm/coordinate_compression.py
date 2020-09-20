@@ -21,3 +21,4 @@ def compress(a):
 if __name__ == "__main__":
     a = [1, 4, 3, 4, 8, 6]
     print(compress(a))
+    # [0, 2, 1, 2, 4, 3]

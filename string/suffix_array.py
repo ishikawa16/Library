@@ -120,12 +120,16 @@ if __name__ == "__main__":
 
     sa.build_sa()
     print(sa.get_sa())
+    # [11, 10, 7, 0, 3, 5, 8, 1, 4, 6, 9, 2]
 
     sa.build_lcp()
     print(sa.get_lcp())
+    # [0, 1, 4, 1, 1, 0, 3, 0, 0, 0, 2]
 
     t = 'racad'
     print(sa.is_contain(t))
+    # True
 
     t = 'racab'
     print(sa.is_contain(t))
+    # False

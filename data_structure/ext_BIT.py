@@ -79,11 +79,14 @@ class ExtBIT:
 if __name__ == "__main__":
     bit = ExtBIT(10)
 
-    bit.add(3)
-    bit.add(1)
-    bit.add(5)
+    bit.add(3)            # {3}
+    bit.add(1)            # {1, 3}
+    bit.add(5)            # {1, 3, 5}
     print(bit.get(2))
+    # 3
     print(bit.search(5))
+    # 3
     
-    bit.remove(3)
+    bit.remove(3)         # {1, 5}
     print(bit.get(2))
+    # 5

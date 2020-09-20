@@ -18,3 +18,4 @@ def ex_gcd(a, b):
 # Driver Code
 if __name__ == "__main__":
     print(ex_gcd(4, 12))
+    # (1, 0)

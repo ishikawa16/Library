@@ -31,3 +31,4 @@ def eratosthenes(n):
 # Driver Code
 if __name__ == "__main__":
     print(eratosthenes(10))
+    # [False, False, True, True, False, True, False, True, False, False, False]

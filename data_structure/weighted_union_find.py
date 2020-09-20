@@ -92,7 +92,7 @@ class WeightedUnionFindTree:
         return -self.par[self.find(x)]
 
     def diff(self, x, y):
-        """重みの差分計算
+        """重みの差分計算 O(1)
 
         Args:
             x (int): 対象要素
@@ -112,4 +112,6 @@ if __name__ == "__main__":
     uf.union(0, 3, 6)
     uf.union(1, 4, 8)
     print(uf.weight(4))
+    # 12
     print(uf.diff(1, 3))
+    # 2

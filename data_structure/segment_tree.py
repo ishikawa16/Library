@@ -95,6 +95,8 @@ if __name__ == "__main__":
     st = SegmentTree(a)
     
     print(st.query(1, 7))
+    # 0
     
     st.update(5, 4)
     print(st.query(1, 7))
+    # 3

@@ -112,3 +112,4 @@ if __name__ == "__main__":
             [6, 4, 5]
             ]
     print(kruskal())
+    # 5

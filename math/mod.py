@@ -55,8 +55,9 @@ if __name__ == "__main__":
 
     fact = [1]
     fact_inv = [0] * (max_n+1)
-
     com_init(max_n, mod)
 
     print(mod_comb_k(1000, 500, mod))
+    # 159835829
     print(mod_pow(3, 45, mod))
+    # 644897553

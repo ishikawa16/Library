@@ -38,5 +38,6 @@ def isOK(i, key):
 
 # Driver Code
 if __name__ == "__main__":
-    a = [1, 3, 4, 6, 8, 9]
+    a = [1, 3, 4, 6, 7, 9]
     print(binary_search(5))
+    # 3

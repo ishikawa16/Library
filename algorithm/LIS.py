@@ -23,3 +23,4 @@ def lis(a):
 if __name__ == "__main__":
     a = [1, 5, 3, 6, 2, 4, 8, 7]
     print(lis(a))
+    # 4

@@ -52,7 +52,10 @@ if __name__ == "__main__":
     bit.add(4, 1)      # [7, 2, 5, 1, 0]
     bit.add(5, 4)      # [7, 2, 5, 1, 4]
     print(bit.sum(3))
+    # 14
     print(bit.sum(5))
+    # 19
 
     bit.add(2, 7)      # [7, 9, 5, 1, 4]
     print(bit.sum(5))
+    # 26

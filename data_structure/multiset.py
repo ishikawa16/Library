@@ -97,15 +97,20 @@ class MultiSet:
 if __name__ == "__main__":
     ms = MultiSet()
 
-    ms.add(3)
-    ms.add(1)
-    ms.add(5)
-    ms.add(2)
-    ms.add(4)
+    ms.add(3)              # {3}
+    ms.add(1)              # {1, 3}
+    ms.add(5)              # {1, 3, 5}
+    ms.add(2)              # {1, 2, 3, 5}
+    ms.add(4)              # {1, 2, 3, 4, 5}
     print(ms.is_exist(1))
+    # True
     print(ms.get_min())
+    # 1
     print(ms.get_max())
+    # 5
 
-    ms.remove(1)
+    ms.remove(1)           # {2, 3, 4, 5}
     print(ms.is_exist(1))
+    # False
     print(ms.get_min())
+    # 2

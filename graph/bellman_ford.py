@@ -38,3 +38,4 @@ if __name__ == "__main__":
             [2, 3, 2]
             ]
     print(bellman_ford(0))
+    # [0, 2, -3, -1]

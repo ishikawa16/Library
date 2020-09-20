@@ -27,3 +27,4 @@ def factorization(n):
 # Driver Code
 if __name__ == "__main__":
     print(factorization(24))
+    # [[2, 3], [3, 1]]

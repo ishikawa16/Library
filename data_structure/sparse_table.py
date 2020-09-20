@@ -65,5 +65,8 @@ if __name__ == "__main__":
     st = SparseTable(a)
 
     print(st.query(1, 4))
+    # 3
     print(st.query(6, 10))
+    # 1
     print(st.query(2, 9))
+    # 0
