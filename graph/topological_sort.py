@@ -8,7 +8,7 @@ def topological():
         edge (list): 辺に関するリスト (edge[i]: iを始点に持つ辺の終点のリスト)
     
     Returns:
-        list: トポロジカル順序
+        list/bool: トポロジカル順序 (閉路が存在する場合はFalse)
     """
     in_degree = [0] * n
     for i in range(n):
@@ -30,7 +30,10 @@ def topological():
         
         res.append(p)
     
-    return res
+    if len(res) == n:
+        return res
+    else:
+        return False
 
 
 # Driver Code
