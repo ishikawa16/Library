@@ -2,17 +2,16 @@ class UnionFindTree:
     """Union-Find Tree
 
     Attributes:
-        v (int):    頂点数
+        n (int):    頂点数
         par (list): 要素の格納先
     """
-    def __init__(self, v):
+    def __init__(self, n):
         """初期化 O(1)
 
         Args:
-            v (int): 頂点数
+            n (int): 頂点数
         """
-        self.v = v
-        self.par = [-1] * self.v
+        self.par = [-1] * n
 
     def find(self, x):
         """要素の検索 O(α(N))

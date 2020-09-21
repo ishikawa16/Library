@@ -7,15 +7,15 @@ def dijkstra(s):
         s (int): 始点
     
     Vars:
-        v (int):     頂点数
+        n (int):     頂点数
         edge (list): 辺に関するリスト (edge[i]:iを始点に持つ辺の[重み,終点]のリスト)
     
     Returns:
         list: 始点sから各頂点までの最短距離
     """
-    dist = [float('inf')] * v
+    dist = [float('inf')] * n
     dist[s] = 0
-    used = [False] * v
+    used = [False] * n
     used[s] = True
     edgelist = []
 
@@ -23,22 +23,22 @@ def dijkstra(s):
         heapq.heappush(edgelist, e)
 
     while edgelist:
-        c, n = heapq.heappop(edgelist)
-        if used[n]:
+        w, v = heapq.heappop(edgelist)
+        if used[v]:
             continue
-        dist[n] = c
-        used[n] = True
-        for e in edge[n]:
+        dist[v] = w
+        used[v] = True
+        for e in edge[v]:
             if used[e[1]]:
                 continue
-            heapq.heappush(edgelist, [e[0] + dist[n], e[1]])
+            heapq.heappush(edgelist, [e[0] + dist[v], e[1]])
 
     return dist
 
 
 # Driver Code
 if __name__ == "__main__":
-    v = 5
+    n = 5
     edge = [[[4, 1], [3, 2], [9, 3]],
             [[4, 0], [9, 2]],
             [[3, 0], [9, 1], [2, 3], [5, 4]],

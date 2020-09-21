@@ -4,14 +4,14 @@ def prim():
     """プリム法 (重み付き無向グラフ) O(ElogV)
 
     Vars:
-        v (int):     頂点数
+        n (int):     頂点数
         edge (list): 辺に関するリスト (edge[i]:iを始点に持つ辺の[重み,終点]のリスト)
 
     Returns:
         int: 最小全域木のコスト
     """
     cost = 0
-    used = [False] * v
+    used = [False] * n
     used[0] = True
     edgelist = []
 
@@ -19,12 +19,12 @@ def prim():
         heapq.heappush(edgelist, e)
 
     while edgelist:
-        c, n = heapq.heappop(edgelist)
-        if used[n]:
+        c, v = heapq.heappop(edgelist)
+        if used[v]:
             continue
         cost += c
-        used[n] = True
-        for e in edge[n]:
+        used[v] = True
+        for e in edge[v]:
             if used[e[1]]:
                 continue
             heapq.heappush(edgelist, e)
@@ -34,7 +34,7 @@ def prim():
 
 # Driver Code
 if __name__ == "__main__":
-    v = 6
+    n = 6
     edge = [[[1, 1], [3, 2]], 
             [[1, 0], [1, 2], [7, 3], [3, 4]],
             [[3, 0], [1, 1], [1, 4]],
