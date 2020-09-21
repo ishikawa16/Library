@@ -3,7 +3,7 @@ def kruskal():
 
     Vars:
         n (int):     頂点数
-        edge (list): 辺に関するリスト (edge[i]:[重み,頂点1,頂点2])
+        edge (list): 辺に関するリスト (edge[i]: [重み,頂点1,頂点2])
 
     Returns:
         int: 最小全域木のコスト
@@ -13,11 +13,11 @@ def kruskal():
     cost = 0
     edge.sort()
 
-    for c, p, q in edge:
+    for w, p, q in edge:
         if uf.same(p, q):
             continue
         uf.union(p, q)
-        cost += c
+        cost += w
 
     return cost
 

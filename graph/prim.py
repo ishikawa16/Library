@@ -5,7 +5,7 @@ def prim():
 
     Vars:
         n (int):     頂点数
-        edge (list): 辺に関するリスト (edge[i]:iを始点に持つ辺の[重み,終点]のリスト)
+        edge (list): 辺に関するリスト (edge[i]: iを始点に持つ辺の[重み,終点]のリスト)
 
     Returns:
         int: 最小全域木のコスト
@@ -19,10 +19,10 @@ def prim():
         heapq.heappush(edgelist, e)
 
     while edgelist:
-        c, v = heapq.heappop(edgelist)
+        w, v = heapq.heappop(edgelist)
         if used[v]:
             continue
-        cost += c
+        cost += w
         used[v] = True
         for e in edge[v]:
             if used[e[1]]:

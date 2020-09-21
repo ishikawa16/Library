@@ -3,7 +3,7 @@ def warshall_floyd():
 
     Vars:
         n (int):     頂点数
-        dist (list): 各頂点間の暫定の最短距離 (dist[i][j]:i→jの重み(存在しない場合はinf, i = jの場合は0))
+        dist (list): 各頂点間の暫定の最短距離 (dist[i][j]: i→jの重み(存在しない場合はinf, i = jの場合は0))
 
     Returns:
         list: すべての頂点間の最短距離
