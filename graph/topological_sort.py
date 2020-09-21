@@ -1,7 +1,7 @@
 import collections
 
 def topological():
-    """トポロジカルソート (有向グラフ)
+    """トポロジカルソート (有向グラフ) O(V+E)
 
     Vars:
         n (int):     頂点数
