@@ -3,7 +3,7 @@ class BinaryIndexedTree:
 
     Attributes:
         n (int):     要素数
-        data (list): 要素の格納先 (1-indexed)
+        data (list): 要素の格納先
     """
     def __init__(self, n):
         """初期化 O(1)
@@ -34,9 +34,10 @@ class BinaryIndexedTree:
         """値の更新 O(logN)
 
         Args:
-            i (int): 加算対象のindex+1
+            i (int): 加算対象のindex
             v (int): 加算値
         """
+        i += 1
         while i <= self.n:
             self.data[i] += v
             i += i & -i
@@ -46,11 +47,11 @@ class BinaryIndexedTree:
 if __name__ == "__main__":
     bit = BinaryIndexedTree(5)
 
-    bit.add(1, 7)      # [7, 0, 0, 0, 0]
-    bit.add(2, 2)      # [7, 2, 0, 0, 0]
-    bit.add(3, 5)      # [7, 2, 5, 0, 0]
-    bit.add(4, 1)      # [7, 2, 5, 1, 0]
-    bit.add(5, 4)      # [7, 2, 5, 1, 4]
+    bit.add(0, 7)      # [7, 0, 0, 0, 0]
+    bit.add(1, 2)      # [7, 2, 0, 0, 0]
+    bit.add(2, 5)      # [7, 2, 5, 0, 0]
+    bit.add(3, 1)      # [7, 2, 5, 1, 0]
+    bit.add(4, 4)      # [7, 2, 5, 1, 4]
     print(bit.sum(3))
     # 14
     print(bit.sum(5))
