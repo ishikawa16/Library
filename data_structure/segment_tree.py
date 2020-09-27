@@ -2,14 +2,14 @@ class SegmentTree:
     """Segment Tree
 
     Attributes:
-        num (int):     n以上の最小の2の累乗
+        n (int):       要素数以上の最小の2の累乗
         ide_ele (int): 単位元
             - RmQ (Range Minimum Query): inf
             - RMQ (Range Maximum Query): -1
             - RSQ (Range Sum Query):     0
             - RPQ (Range Product Query): 1
             - RGQ (Range GCD Query):     0
-        seg (list):    要素の格納先
+        seg (list):    要素の格納先 (1-indexed)
     """
     def __init__(self, a):
         """初期化 O(N)
@@ -17,14 +17,14 @@ class SegmentTree:
         Args:
             a (list): 対象の配列
         """
-        self.num = 2 ** (len(a) - 1).bit_length()
+        self.n = 2 ** (len(a) - 1).bit_length()
         self.ide_ele = float('inf')
-        self.seg = [self.ide_ele] * (2*self.num-1)
+        self.seg = [self.ide_ele] * (2*self.n)
 
-        for i, v in enumerate(a):
-            self.seg[self.num+i-1] = v
-        for i in range(self.num-2, -1, -1):
-            self.seg[i] = self.st_func(self.seg[2*i+1], self.seg[2*i+2])
+        for i, v in enumerate(a, self.n):
+            self.seg[i] = v
+        for i in range(self.n-1, 0, -1):
+            self.seg[i] = self.st_func(self.seg[2*i], self.seg[2*i+1])
 
     def query(self, l, r):
         """区間クエリの計算 O(logN)
@@ -36,28 +36,22 @@ class SegmentTree:
         Returns:
             int: [l, r)についての区間クエリ
         """
-        if r <= l:
-            return self.ide_ele
-        
-        l += self.num - 1
-        r += self.num - 2
-        res = self.ide_ele
+        l += self.n
+        r += self.n
+        res_l = self.ide_ele
+        res_r = self.ide_ele
 
-        while r - l > 1:
-            if l % 2 == 0:
-                res = self.st_func(res, self.seg[l])
+        while l < r:
+            if l % 2 == 1:
+                res_l = self.st_func(res_l, self.seg[l])
+                l += 1
             if r % 2 == 1:
-                res = self.st_func(res, self.seg[r])
                 r -= 1
-            l = l // 2
-            r = (r - 1) // 2
-        
-        if l == r:
-            res = self.st_func(res, self.seg[l])
-        else:
-            res = self.st_func(res, self.st_func(self.seg[l], self.seg[r]))
-        
-        return res
+                res_r = self.st_func(self.seg[r], res_r)
+            l //= 2
+            r //= 2
+
+        return self.st_func(res_l, res_r)
 
     def update(self, i, v):
         """値の更新 O(logN)
@@ -66,11 +60,11 @@ class SegmentTree:
             i (int): 更新対象のindex
             v (int): 更新値
         """
-        i += self.num - 1
+        i += self.n
         self.seg[i] = v
-        while i > 0:
-            i = (i - 1) // 2
-            self.seg[i] = self.st_func(self.seg[i*2+1], self.seg[i*2+2])
+        while i > 1:
+            i //= 2
+            self.seg[i] = self.st_func(self.seg[i*2], self.seg[i*2+1])
     
     def st_func(self, x, y):
         """問題に応じた処理
