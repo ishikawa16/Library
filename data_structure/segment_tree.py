@@ -2,7 +2,6 @@ class SegmentTree:
     """Segment Tree
 
     Attributes:
-        n (int):       要素数
         num (int):     n以上の最小の2の累乗
         ide_ele (int): 単位元
             - RmQ (Range Minimum Query): inf
@@ -18,14 +17,13 @@ class SegmentTree:
         Args:
             a (list): 対象の配列
         """
-        self.n = len(a)
-        self.num = 2 ** (self.n - 1).bit_length()
+        self.num = 2 ** (len(a) - 1).bit_length()
         self.ide_ele = float('inf')
         self.seg = [self.ide_ele] * (2*self.num-1)
 
-        for i in range(self.n):
-            self.seg[self.num+i-1] = a[i]    
-        for i in range(self.num-2, -1, -1) :
+        for i, v in enumerate(a):
+            self.seg[self.num+i-1] = v
+        for i in range(self.num-2, -1, -1):
             self.seg[i] = self.st_func(self.seg[2*i+1], self.seg[2*i+2])
 
     def query(self, l, r):
