@@ -29,8 +29,8 @@ class UnionFindTree:
             return self.par[x]
 
 
-    def union(self, x, y):
-        """要素の併合 O(1)
+    def unite(self, x, y):
+        """要素の併合 O(α(N))
 
         Args:
             x (int): 併合対象の集合に属する要素
@@ -76,10 +76,10 @@ class UnionFindTree:
 if __name__ == "__main__":
     uf = UnionFindTree(6)
 
-    uf.union(0, 1)
-    uf.union(2, 5)
-    uf.union(0, 3)
-    uf.union(1, 4)
+    uf.unite(0, 1)
+    uf.unite(2, 5)
+    uf.unite(0, 3)
+    uf.unite(1, 4)
     print(uf.find(3))
     # 0
     print(uf.size(1))
