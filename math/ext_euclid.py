@@ -1,4 +1,4 @@
-def ex_gcd(a, b):
+def ext_gcd(a, b):
     """拡張ユークリッドの互除法 O(loga)
 
     Args:
@@ -11,11 +11,11 @@ def ex_gcd(a, b):
     if b == 0:
         return 1, 0
     else:
-        x, y = ex_gcd(b, a%b)
+        x, y = ext_gcd(b, a%b)
         return y, x - (a // b) * y
 
 
 # Driver Code
 if __name__ == "__main__":
-    print(ex_gcd(4, 12))
+    print(ext_gcd(4, 12))
     # (1, 0)
