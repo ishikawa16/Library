@@ -23,17 +23,17 @@ def binary_search(key):
     
     return ok
 
-def isOK(i, key):
+def isOK(targ, key):
     """条件判定
 
     Args:
-        i   (int): 判定対象の値
-        key (int): 基準値
+        targ (int): 判定対象の値
+        key  (int): 基準値
 
     Returns:
         bool: iが条件を満たすか否か
     """
-    return a[i] >= key
+    return a[targ] >= key
 
 
 # Driver Code
