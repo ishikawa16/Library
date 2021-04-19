@@ -31,7 +31,7 @@ def isOK(targ, key):
         key  (int): 基準値
 
     Returns:
-        bool: iが条件を満たすか否か
+        bool: targが条件を満たすか否か
     """
     return a[targ] >= key
 
