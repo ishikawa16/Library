@@ -7,15 +7,15 @@ def dijkstra(s):
         s (int): 始点
     
     Vars:
-        n (int):     頂点数
+        N (int):     頂点数
         edge (list): 辺に関するリスト (edge[i]: iを始点に持つ辺の[重み,終点]のリスト)
     
     Returns:
         list: 始点sから各頂点までの最短距離
     """
-    dist = [float('inf')] * n
+    dist = [float('inf')] * N
     dist[s] = 0
-    used = [False] * n
+    used = [False] * N
     used[s] = True
     edgelist = []
 
@@ -38,7 +38,7 @@ def dijkstra(s):
 
 # Driver Code
 if __name__ == "__main__":
-    n = 5
+    N = 5
     edge = [[[4, 1], [3, 2], [9, 3]],
             [[4, 0], [9, 2]],
             [[3, 0], [9, 1], [2, 3], [5, 4]],

@@ -4,19 +4,19 @@ def topological():
     """トポロジカルソート (有向グラフ) O(V+E)
 
     Vars:
-        n (int):     頂点数
+        N (int):     頂点数
         edge (list): 辺に関するリスト (edge[i]: iを始点に持つ辺の終点のリスト)
     
     Returns:
         list/bool: トポロジカル順序 (閉路が存在する場合はFalse)
     """
-    in_degree = [0] * n
-    for i in range(n):
+    in_degree = [0] * N
+    for i in range(N):
         for v in edge[i]:
             in_degree[v] += 1
     
     nodelist = collections.deque()
-    for i in range(n):
+    for i in range(N):
         if in_degree[i] == 0:
             nodelist.append(i)
     
@@ -30,7 +30,7 @@ def topological():
         
         res.append(p)
     
-    if len(res) == n:
+    if len(res) == N:
         return res
     else:
         return False
@@ -38,7 +38,7 @@ def topological():
 
 # Driver Code
 if __name__ == "__main__":
-    n = 6
+    N = 6
     edge = [[1],
             [2],
             [],

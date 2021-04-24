@@ -2,13 +2,13 @@ def kruskal():
     """クラスカル法 (重み付き無向グラフ) O(ElogV)
 
     Vars:
-        n (int):     頂点数
+        N (int):     頂点数
         edge (list): 辺に関するリスト (edge[i]: [重み,頂点1,頂点2])
 
     Returns:
         int: 最小全域木のコスト
     """
-    uf = UnionFindTree(n)
+    uf = UnionFindTree(N)
 
     cost = 0
     edge.sort()
@@ -99,7 +99,7 @@ class UnionFindTree:
 
 # Driver Code
 if __name__ == "__main__":
-    n = 6
+    N = 6
     edge = [[1, 0, 1],
             [3, 0, 2],
             [1, 1, 2],
