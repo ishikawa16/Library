@@ -7,7 +7,7 @@ def binary_search(key):
     Vars:
         ok (int): 条件を満たすindexの上限値/下限値
         ng (int): 条件を満たさないindexの下限値-1/上限値+1
-    
+
     Returns:
         int: 条件を満たす最小値/最大値
     """
@@ -20,7 +20,7 @@ def binary_search(key):
             ok = mid
         else:
             ng = mid
-    
+
     return ok
 
 def isOK(targ, key):
@@ -33,11 +33,11 @@ def isOK(targ, key):
     Returns:
         bool: targが条件を満たすか否か
     """
-    return a[targ] >= key
+    return A[targ] >= key
 
 
 # Driver Code
 if __name__ == "__main__":
-    a = [1, 3, 4, 6, 7, 9]
+    A = [1, 3, 4, 6, 7, 9]
     print(binary_search(5))
     # 3
