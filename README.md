@@ -18,6 +18,7 @@
 - [dijkstra.py](graph/dijkstra.py)
 - [kruskal.py](graph/kruskal.py)
 - [prim.py](graph/prim.py)
+- [ssc.py](graph/ssc.py)
 - [topological_sort.py](graph/topological_sort.py)
 - [warshall_floyd.py](graph/warshall_floyd.py)
 ### Math
