@@ -7,28 +7,28 @@ class BinaryIndexedTree:
     """
     def __init__(self, n):
         """初期化 O(1)
-    
+
         Args:
             n (int): 要素数
         """
         self.n = n
         self.data = [0] * (n+1)
 
-    def sum(self, i):
+    def get_sum(self, i):
         """区間和の計算 O(logN)
 
         Args:
             i (int): 区間の右端のindex
-        
+
         Returns:
             int: [0, i)の区間和
         """
-        res = 0
+        range_sum = 0
         while i > 0:
-            res += self.data[i]
+            range_sum += self.data[i]
             i -= i & -i
-        
-        return res
+
+        return range_sum
 
     def add(self, i, v):
         """値の更新 O(logN)
@@ -52,11 +52,11 @@ if __name__ == "__main__":
     bit.add(2, 5)      # [7, 2, 5, 0, 0]
     bit.add(3, 1)      # [7, 2, 5, 1, 0]
     bit.add(4, 4)      # [7, 2, 5, 1, 4]
-    print(bit.sum(3))
+    print(bit.get_sum(3))
     # 14
-    print(bit.sum(5))
+    print(bit.get_sum(5))
     # 19
 
     bit.add(2, 7)      # [7, 9, 5, 1, 4]
-    print(bit.sum(5))
+    print(bit.get_sum(5))
     # 26
