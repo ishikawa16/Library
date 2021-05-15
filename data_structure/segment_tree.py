@@ -13,7 +13,7 @@ class SegmentTree:
     """
     def __init__(self, a):
         """初期化 O(N)
-        
+
         Args:
             a (list): 対象の配列
         """
@@ -32,7 +32,7 @@ class SegmentTree:
         Args:
             l (int): 区間の左端
             r (int): 区間の右端
-        
+
         Returns:
             int: [l, r)についての区間クエリ
         """
@@ -65,7 +65,7 @@ class SegmentTree:
         while i > 1:
             i //= 2
             self.seg[i] = self.st_func(self.seg[i*2], self.seg[i*2+1])
-    
+
     def st_func(self, x, y):
         """問題に応じた処理
 
@@ -83,12 +83,12 @@ class SegmentTree:
 # Driver Code
 if __name__ == "__main__":
     A = [2, 5, 3, 8, 7, 0, 9, 1, 6, 4]
-    
+
     st = SegmentTree(A)
-    
+
     print(st.query(1, 7))
     # 0
-    
+
     st.update(5, 4)
     print(st.query(1, 7))
     # 3

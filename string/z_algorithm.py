@@ -1,9 +1,9 @@
-def z_algo(s):
+def z_algorithm(s):
     """Z-algorithm O(|S|)
 
     Args:
         s (str): 対象文字列
-    
+
     Returns:
         list: LCP配列 (z[i]: sとs[i:]の最長共通接尾辞の長さ)
     """
@@ -34,5 +34,5 @@ def z_algo(s):
 # Driver Code
 if __name__ == "__main__":
     s = 'abracadabra'
-    print(z_algo(s))
+    print(z_algorithm(s))
     # [11, 0, 0, 1, 0, 1, 0, 4, 0, 0, 1]

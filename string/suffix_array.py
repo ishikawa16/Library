@@ -38,9 +38,9 @@ class SuffixArray:
                     tmp_rank_sa[self.sa[i]] += 1
             for i in range(self.n+1):
                 self.rank_sa[i] = tmp_rank_sa[i]
-            
+
             self.k *= 2
-        
+
     def get_sa(self):
         """Suffix Arrayの取得 O(1)
 
@@ -48,14 +48,14 @@ class SuffixArray:
             list: Suffix Array
         """
         return self.sa
-    
+
     def build_lcp(self):
         """LCP配列の構築 O(N)
         """
         rank_lcp = [0] * (self.n+1)
         for i in range(self.n+1):
             rank_lcp[self.sa[i]] = i
-        
+
         h = 0
         for i in range(self.n):
             j = self.sa[rank_lcp[i]-1]
@@ -66,7 +66,7 @@ class SuffixArray:
                     break
                 h += 1
             self.lcp[rank_lcp[i]-1] = h
-    
+
     def get_lcp(self):
         """LCP配列の取得 O(1)
 
@@ -74,13 +74,13 @@ class SuffixArray:
             list: LCP Array
         """
         return self.lcp
-    
+
     def is_contain(self, t):
         """文字列検索 O(|T|log|S|)
 
         Args:
             t (str): 検索対象の文字列
-        
+
         Returns:
             bool: tがsに含まれているか否か
         """
@@ -91,16 +91,16 @@ class SuffixArray:
                 low = mid
             else:
                 high = mid
-        
+
         return self.s[self.sa[high]:self.sa[high]+len(t)] == t
-    
+
     def compare_sa(self, i, j):
         """比較関数 O(1)
 
         Args:
             i (int): 比較対象のindex
             j (int): 比較対象のindex
-        
+
         Returns:
             int: -1 or 1
         """
@@ -115,7 +115,7 @@ class SuffixArray:
 # Driver Code
 if __name__ == "__main__":
     s = 'abracadabra'
-    
+
     sa = SuffixArray(s)
 
     sa.build_sa()

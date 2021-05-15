@@ -3,7 +3,7 @@ def factorization(n):
 
     Args:
         n (int): 対象の値
-    
+
     Returns:
         list: 素因数とその個数の組み合わせの列挙
     """

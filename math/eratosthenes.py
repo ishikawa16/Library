@@ -3,7 +3,7 @@ def eratosthenes(n):
 
     Args:
         n (int): 上限値 (n > 1)
-    
+
     Returns:
         list: 問題に応じた返り値
             - 素数判定:      is_prime

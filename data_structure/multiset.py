@@ -24,7 +24,7 @@ class MultiSet:
             self.d[v] = 1
         else:
             self.d[v] += 1
-        
+
         heapq.heappush(self.min_h, v)
         heapq.heappush(self.max_h, -v)
 
@@ -33,7 +33,7 @@ class MultiSet:
 
         Args:
             v (int): 削除する要素
-        
+
         Returns:
             bool: vの削除を実行できたか否か
         """
@@ -47,13 +47,13 @@ class MultiSet:
                 heapq.heappop(self.min_h)
             else:
                 break
-        
+
         while len(self.max_h) > 0:
             if self.d[-self.max_h[0]] == 0:
                 heapq.heappop(self.max_h)
             else:
                 break
-        
+
         return True
 
     def is_exist(self, v):
@@ -61,7 +61,7 @@ class MultiSet:
 
         Args:
             v (int): 判定する要素
-        
+
         Returns:
             bool: vが存在するか否か
         """
@@ -80,7 +80,7 @@ class MultiSet:
             return self.min_h[0]
         else:
             return False
-    
+
     def get_max(self):
         """最大値の取得 O(1)
 

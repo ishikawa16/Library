@@ -63,7 +63,7 @@ class UnionFindTree:
         """
         x = self.find(x)
         y = self.find(y)
-        
+
         if x == y:
             return
 
@@ -84,7 +84,7 @@ class UnionFindTree:
             bool: xとyが同じ集合に属するか否か
         """
         return self.find(x) == self.find(y)
-    
+
     def size(self, x):
         """要素数の計算 O(1)
 

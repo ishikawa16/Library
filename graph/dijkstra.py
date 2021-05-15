@@ -5,11 +5,11 @@ def dijkstra(s):
 
     Args:
         s (int): 始点
-    
+
     Vars:
         N (int):     頂点数
         edge (list): 辺に関するリスト (edge[i]: iを始点に持つ辺の[重み,終点]のリスト)
-    
+
     Returns:
         list: 始点sから各頂点までの最短距離
     """

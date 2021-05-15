@@ -20,7 +20,7 @@ class WeightedUnionFindTree:
 
         Args:
             x (int): 対象要素
-        
+
         Returns:
             int: xの根
         """
@@ -46,7 +46,7 @@ class WeightedUnionFindTree:
 
     def unite(self, x, y, w):
         """要素の併合 O(1)
-        
+
         Args:
             x (int): 併合対象の集合に属する要素
             y (int): 併合対象の集合に属する要素
@@ -55,25 +55,25 @@ class WeightedUnionFindTree:
         w += self.weight(x) - self.weight(y)
         x = self.find(x)
         y = self.find(y)
-        
+
         if x == y:
             return
 
         if self.par[x] > self.par[y]:
             x, y = y, x
             w = -w
-        
+
         self.par[x] += self.par[y]
         self.par[y] = x
         self.diff_w[y] = w
 
     def same(self, x, y):
         """要素の判定 O(1)
-        
+
         Args:
             x (int): 判定対象の要素
             y (int): 判定対象の要素
-        
+
         Returns:
             bool: xとyが同じ集合に属するか否か
         """
@@ -106,7 +106,7 @@ class WeightedUnionFindTree:
 # Driver Code
 if __name__ == "__main__":
     uf = WeightedUnionFindTree(6)
-    
+
     uf.unite(0, 1, 4)
     uf.unite(0, 3, 6)
     uf.unite(1, 4, 8)

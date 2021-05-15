@@ -12,7 +12,7 @@ class SparseTable:
     """
     def __init__(self, a):
         """初期化 O(NlogN)
-        
+
         Args:
             a (list): 対象の配列
         """
@@ -23,18 +23,18 @@ class SparseTable:
 
         for i in range(self.n):
             self.table[i][0] = a[i]
-        
+
         for k in range(1, self.num):
             for i in range(self.n-2**k+1):
                 self.table[i][k] = self.st_func(self.table[i][k-1], self.table[i+2**(k-1)][k-1])
-        
+
     def query(self, l, r):
         """区間クエリの計算 O(1)
 
         Args:
             l (int): 区間の左端
             r (int): 区間の右端
-        
+
         Returns:
             int: [l, r)についての区間クエリ
         """
@@ -45,7 +45,7 @@ class SparseTable:
         else:
             k = ((w+1)//2-1).bit_length()
             return self.st_func(self.table[l][k], self.table[r-2**k][k])
-    
+
     def st_func(self, x, y):
         """問題に応じた処理
 

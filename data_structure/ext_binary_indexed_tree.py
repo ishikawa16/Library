@@ -13,7 +13,7 @@ class ExtBinaryIndexedTree:
         """
         self.n = max + 1
         self.data = [0] * (self.n + 1)
-    
+
     def add(self, v):
         """値の追加 O(logN)
 
@@ -24,7 +24,7 @@ class ExtBinaryIndexedTree:
         while i <= self.n:
             self.data[i] += 1
             i += i & -i
-    
+
     def remove(self, v):
         """値の削除 O(logN)
 
@@ -35,13 +35,13 @@ class ExtBinaryIndexedTree:
         while i <= self.n:
             self.data[i] -= 1
             i += i & -i
-    
+
     def search(self, v):
         """値の検索 O(logN)
 
         Args:
             v (int): 対象の値
-        
+
         Returns:
             int: vが何番目に小さいか
         """
@@ -50,15 +50,15 @@ class ExtBinaryIndexedTree:
         while i > 0:
             res += self.data[i]
             i -= i & -i
-        
+
         return res
-    
+
     def lower_bound(self, k):
         """値の取得 O(logN)
 
         Args:
             k (int): 何番目に小さい値を取得するか
-        
+
         Returns:
             int: k番目に小さい値
         """
@@ -71,7 +71,7 @@ class ExtBinaryIndexedTree:
                 high = mid
             else:
                 low = mid
-        
+
         return high
 
 
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     # 3
     print(bit.search(5))
     # 3
-    
+
     bit.remove(3)         # {1, 5}
     print(bit.lower_bound(2))
     # 5
