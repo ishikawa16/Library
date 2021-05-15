@@ -1,23 +1,4 @@
-def mod_pow(a, n, p):
-    """累乗 O(logN)
-
-    Args:
-        a (int): 対象の値
-        n (int): 指数
-        p (int): 除数
-
-    Returns:
-        int: a^n mod p
-    """
-    res = 1
-    while n > 0:
-        if n & 1:
-            res = res * a % p
-        a = a * a % p
-        n >>= 1
-    return res
-
-def mod_comb_k(n, k, p):
+def mod_comb(n, k, p):
     """二項係数 0(1)
 
     Args:
@@ -33,7 +14,7 @@ def mod_comb_k(n, k, p):
     else:
         return fact[n] * fact_inv[k] * fact_inv[n-k] % p
 
-def com_init(n, p):
+def comb_init(n, p):
     """二項係数の計算の前処理 O(N)
 
     Args:
@@ -55,9 +36,6 @@ if __name__ == "__main__":
 
     fact = [1]
     fact_inv = [0] * (max_n+1)
-    com_init(max_n, mod)
-
-    print(mod_comb_k(1000, 500, mod))
+    comb_init(max_n, mod)
+    print(mod_comb(1000, 500, mod))
     # 159835829
-    print(mod_pow(3, 45, mod))
-    # 644897553
