@@ -44,7 +44,7 @@ class WeightedUnionFindTree:
         self.find(x)
         return self.diff_w[x]
 
-    def union(self, x, y, w):
+    def unite(self, x, y, w):
         """要素の併合 O(1)
         
         Args:
@@ -107,9 +107,9 @@ class WeightedUnionFindTree:
 if __name__ == "__main__":
     uf = WeightedUnionFindTree(6)
     
-    uf.union(0, 1, 4)
-    uf.union(0, 3, 6)
-    uf.union(1, 4, 8)
+    uf.unite(0, 1, 4)
+    uf.unite(0, 3, 6)
+    uf.unite(1, 4, 8)
     print(uf.weight(4))
     # 12
     print(uf.diff(1, 3))

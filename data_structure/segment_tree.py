@@ -82,9 +82,9 @@ class SegmentTree:
 
 # Driver Code
 if __name__ == "__main__":
-    a = [2, 5, 3, 8, 7, 0, 9, 1, 6, 4]
+    A = [2, 5, 3, 8, 7, 0, 9, 1, 6, 4]
     
-    st = SegmentTree(a)
+    st = SegmentTree(A)
     
     print(st.query(1, 7))
     # 0

@@ -1,4 +1,4 @@
-class ExtBIT:
+class ExtBinaryIndexedTree:
     """BITを拡張したデータ構造 (k番目に小さい値を高速に取得)
 
     Attributes:
@@ -53,7 +53,7 @@ class ExtBIT:
         
         return res
     
-    def get(self, k):
+    def lower_bound(self, k):
         """値の取得 O(logN)
 
         Args:
@@ -77,16 +77,16 @@ class ExtBIT:
 
 # Driver Code
 if __name__ == "__main__":
-    bit = ExtBIT(10)
+    bit = ExtBinaryIndexedTree(10)
 
     bit.add(3)            # {3}
     bit.add(1)            # {1, 3}
     bit.add(5)            # {1, 3, 5}
-    print(bit.get(2))
+    print(bit.lower_bound(2))
     # 3
     print(bit.search(5))
     # 3
     
     bit.remove(3)         # {1, 5}
-    print(bit.get(2))
+    print(bit.lower_bound(2))
     # 5
