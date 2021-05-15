@@ -1,16 +1,16 @@
 import bisect
 
-def lis(array):
+def lis(arr):
     """最長増加部分列 O(NlogN)
 
     Args:
-        array (list): 対象の配列
+        arr (list): 対象の配列
 
     Returns:
         int: 最長増加部分列の長さ
     """
-    seq = [array[0]]
-    for v in array:
+    seq = [arr[0]]
+    for v in arr:
         if seq[-1] < v:
             seq.append(v)
         else:

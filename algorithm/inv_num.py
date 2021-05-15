@@ -1,15 +1,15 @@
 import bisect
 
-def inv_num(array):
+def inv_num(arr):
     """転倒数 O(NlogN)
 
     Args:
-        array (list): 対象の配列
+        arr (list): 対象の配列
 
     Returns:
-        int: arrayの転倒数
+        int: 配列arrの転倒数
     """
-    compressed = compress(array)
+    compressed = compress(arr)
     bit = BinaryIndexedTree(len(compressed))
 
     num = 0
