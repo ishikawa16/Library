@@ -6,13 +6,13 @@
 - [inv_num.py](algorithm/inv_num.py)
 - [lis.py](algorithm/lis.py)
 ### Data Structure
-- [bit.py](data_structure/bit.py)
-- [ext_bit.py](data_structure/ext_bit.py)
+- [binary_indexed_tree.py](data_structure/binary_indexed_tree.py)
+- [ext_binary_indexed_tree.py](data_structure/ext_binary_indexed_tree.py)
 - [multiset.py](data_structure/multiset.py)
 - [segment_tree.py](data_structure/segment_tree.py)
 - [sparse_table.py](data_structure/sparse_table.py)
-- [union_find.py](data_structure/union_find.py)
-- [weighted_union_find.py](data_structure/weighted_union_find.py)
+- [union_find_tree.py](data_structure/union_find_tree.py)
+- [weighted_union_find_tree.py](data_structure/weighted_union_find_tree.py)
 ### Graph
 - [bellman_ford.py](graph/bellman_ford.py)
 - [dijkstra.py](graph/dijkstra.py)
