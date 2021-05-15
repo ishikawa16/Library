@@ -1,13 +1,13 @@
 # Python Library for Competitive Programming
 競技プログラミング用のPythonライブラリ
 ### Algorithm
-- [lis.py](algorithm/lis.py)
 - [binary_search.py](algorithm/binary_search.py)
 - [compress.py](algorithm/compress.py)
 - [inv_num.py](algorithm/inv_num.py)
+- [lis.py](algorithm/lis.py)
 ### Data Structure
-- [binary_indexed_tree.py](data_structure/binary_indexed_tree.py)
-- [ext_BIT.py](data_structure/ext_BIT.py)
+- [bit.py](data_structure/bit.py)
+- [ext_bit.py](data_structure/ext_bit.py)
 - [multiset.py](data_structure/multiset.py)
 - [segment_tree.py](data_structure/segment_tree.py)
 - [sparse_table.py](data_structure/sparse_table.py)
@@ -25,7 +25,7 @@
 - [eratosthenes.py](math/eratosthenes.py)
 - [ext_euclid.py](math/ext_euclid.py)
 - [factorization.py](math/factorization.py)
-- [mod.py](math/mod.py)
+- [mod_comb.py](math/mod_comb.py)
 ### String
 - [suffix_array.py](string/suffix_array.py)
 - [z_algorithm.py](string/z_algorithm.py)
