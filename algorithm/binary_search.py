@@ -1,8 +1,5 @@
-def binary_search(key):
+def binary_search():
     """二分探索法 O(logN)
-
-    Args:
-        key (int): 基準値
 
     Vars:
         ok (int): 条件を満たすindexの上限値/下限値
@@ -16,28 +13,27 @@ def binary_search(key):
     while abs(ok - ng) > 1:
         mid = (ok + ng) // 2
 
-        if isOK(mid, key):
+        if isOK(mid):
             ok = mid
         else:
             ng = mid
 
     return ok
 
-def isOK(targ, key):
+def isOK(targ):
     """条件判定
 
     Args:
         targ (int): 判定対象の値
-        key  (int): 基準値
 
     Returns:
         bool: targが条件を満たすか否か
     """
-    return A[targ] >= key
+    return A[targ] >= 5
 
 
 # Driver Code
 if __name__ == "__main__":
     A = [1, 3, 4, 6, 7, 9]
-    print(binary_search(5))
+    print(binary_search())
     # 3
