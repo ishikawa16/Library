@@ -14,7 +14,7 @@ def inv_num(arr):
 
     num = 0
     for i, v in enumerate(compressed):
-        num += i - bit.get_sum(v+1)
+        num += i - bit.sum(v+1)
         bit.add(v, 1)
 
     return num
@@ -37,7 +37,19 @@ class BinaryIndexedTree:
         self.n = n
         self.data = [0] * (n+1)
 
-    def get_sum(self, i):
+    def add(self, i, v):
+        """値の更新 O(logN)
+
+        Args:
+            i (int): 加算対象のindex
+            v (int): 加算値
+        """
+        i += 1
+        while i <= self.n:
+            self.data[i] += v
+            i += i & -i
+
+    def sum(self, i):
         """区間和の計算 O(logN)
 
         Args:
@@ -53,31 +65,19 @@ class BinaryIndexedTree:
 
         return range_sum
 
-    def add(self, i, v):
-        """値の更新 O(logN)
 
-        Args:
-            i (int): 加算対象のindex
-            v (int): 加算値
-        """
-        i += 1
-        while i <= self.n:
-            self.data[i] += v
-            i += i & -i
-
-
-def compress(array):
+def compress(arr):
     """1次元座標圧縮 (大小関係の抽出) O(NlogN)
 
     Args:
-        array (list): 対象の配列
+        arr (list): 対象の配列
 
     Returns:
         list: 圧縮済みの配列
     """
-    tmp = sorted(list(set(array)))
+    tmp = sorted(list(set(arr)))
     compressed = []
-    for v in array:
+    for v in arr:
         compressed.append(bisect.bisect_left(tmp, v))
 
     return compressed

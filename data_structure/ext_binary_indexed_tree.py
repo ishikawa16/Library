@@ -5,14 +5,14 @@ class ExtBinaryIndexedTree:
         n (int):     要素数
         data (list): 要素の格納先 (1-indexed)
     """
-    def __init__(self, max):
+    def __init__(self, max_v):
         """初期化 O(1)
 
         Args:
-            max (int): 要素の上限値
+            max_v (int): 要素の上限値
         """
-        self.n = max + 1
-        self.data = [0] * (self.n + 1)
+        self.n = max_v + 1
+        self.data = [0] * (max_v+1)
 
     def add(self, v):
         """値の追加 O(logN)

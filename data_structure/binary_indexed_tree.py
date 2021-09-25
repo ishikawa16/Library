@@ -14,7 +14,19 @@ class BinaryIndexedTree:
         self.n = n
         self.data = [0] * (n+1)
 
-    def get_sum(self, i):
+    def add(self, i, v):
+        """値の更新 O(logN)
+
+        Args:
+            i (int): 加算対象のindex
+            v (int): 加算値
+        """
+        i += 1
+        while i <= self.n:
+            self.data[i] += v
+            i += i & -i
+
+    def sum(self, i):
         """区間和の計算 O(logN)
 
         Args:
@@ -30,18 +42,6 @@ class BinaryIndexedTree:
 
         return range_sum
 
-    def add(self, i, v):
-        """値の更新 O(logN)
-
-        Args:
-            i (int): 加算対象のindex
-            v (int): 加算値
-        """
-        i += 1
-        while i <= self.n:
-            self.data[i] += v
-            i += i & -i
-
 
 # Driver Code
 if __name__ == "__main__":
@@ -52,11 +52,11 @@ if __name__ == "__main__":
     bit.add(2, 5)      # [7, 2, 5, 0, 0]
     bit.add(3, 1)      # [7, 2, 5, 1, 0]
     bit.add(4, 4)      # [7, 2, 5, 1, 4]
-    print(bit.get_sum(3))
+    print(bit.sum(3))
     # 14
-    print(bit.get_sum(5))
+    print(bit.sum(5))
     # 19
 
-    bit.add(2, 7)      # [7, 9, 5, 1, 4]
-    print(bit.get_sum(5))
+    bit.add(1, 7)      # [7, 9, 5, 1, 4]
+    print(bit.sum(5))
     # 26

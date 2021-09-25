@@ -10,19 +10,19 @@ class SparseTable:
             - RGQ(Range GCD Query):     0
         table (list):  要素の格納先
     """
-    def __init__(self, a):
+    def __init__(self, arr):
         """初期化 O(NlogN)
 
         Args:
             a (list): 対象の配列
         """
-        self.n = len(a)
+        self.n = len(arr)
         self.num = (self.n - 1).bit_length()
         self.ide_ele = float('inf')
         self.table = [[self.ide_ele] * self.num for _ in range(self.n)]
 
         for i in range(self.n):
-            self.table[i][0] = a[i]
+            self.table[i][0] = arr[i]
 
         for k in range(1, self.num):
             for i in range(self.n-2**k+1):

@@ -3,7 +3,7 @@ class UnionFindTree:
 
     Attributes:
         n (int):    頂点数
-        par (list): 要素の格納先
+        par (list): 各要素の親要素を格納するリスト
     """
     def __init__(self, n):
         """初期化 O(1)

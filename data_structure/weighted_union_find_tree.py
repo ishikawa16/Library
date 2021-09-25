@@ -3,7 +3,7 @@ class WeightedUnionFindTree:
 
     Attributes:
         n (int):       頂点数
-        par (list):    要素の格納先
+        par (list):    各要素の親要素を格納するリスト
         diff_w (list): 親要素との値の差分
     """
     def __init__(self, n):
