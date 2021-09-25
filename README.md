@@ -4,7 +4,7 @@
 - [compress.py](algorithm/compress.py)
 - [inv_num.py](algorithm/inv_num.py)
 - [lis.py](algorithm/lis.py)
-## Data Structure
+## Data structure
 - [binary_indexed_tree.py](data_structure/binary_indexed_tree.py)
 - [ext_binary_indexed_tree.py](data_structure/ext_binary_indexed_tree.py)
 - [lazy_segment_tree.py](data_structure/lazy_segment_tree.py)
