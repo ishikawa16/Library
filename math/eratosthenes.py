@@ -1,8 +1,8 @@
-def eratosthenes(n):
+def eratosthenes(max_v):
     """エラトステネスの篩 O(NloglogN)
 
     Args:
-        n (int): 上限値 (n > 1)
+        max_v (int): 上限値 (> 1)
 
     Returns:
         list: 問題に応じた返り値
@@ -10,17 +10,17 @@ def eratosthenes(n):
             - 素数列挙:      [i for i in range(n+1) if is_prime[i]]
             - 最小素因数列挙: min_factor
     """
-    is_prime = [True] * (n+1)
+    is_prime = [True] * (max_v+1)
     is_prime[0] = False
     is_prime[1] = False
-    min_factor = [-1] * (n+1)
+    min_factor = [-1] * (max_v+1)
     min_factor[0] = 0
     min_factor[1] = 1
 
-    for i in range(2, n+1):
+    for i in range(2, max_v+1):
         if is_prime[i]:
             min_factor[i] = i
-            for j in range(i*2, n+1, i):
+            for j in range(i*2, max_v+1, i):
                 is_prime[j] = False
                 if min_factor[j] == -1:
                     min_factor[j] = i

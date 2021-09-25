@@ -28,7 +28,6 @@ class UnionFindTree:
             self.par[x] = self.find(self.par[x])
             return self.par[x]
 
-
     def unite(self, x, y):
         """要素の併合 O(α(N))
 

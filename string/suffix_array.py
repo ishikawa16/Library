@@ -5,7 +5,7 @@ class SuffixArray:
 
     Attributes:
         s (str):         対象文字列
-        n (int):         sの長さ
+        l (int):         sの長さ
         k (int):         ダブリングに用いる変数
         sa (list):       Suffix Array
         rank_sa (list):  k文字の部分文字列の順番 (rank[i]: s[i:i+k]が何番目に小さいか)
@@ -18,25 +18,25 @@ class SuffixArray:
             s (str): 対象文字列
         """
         self.s = s
-        self.n = len(s)
+        self.l = len(s)
         self.k = 1
-        self.sa = [i for i in range(self.n+1)]
+        self.sa = [i for i in range(self.l+1)]
         self.rank_sa = [ord(c) for c in s] + [-1]
-        self.lcp = [0] * self.n
+        self.lcp = [0] * self.l
 
     def build_sa(self):
         """Suffix Arrayの構築 O(N(logN)^2)
         """
-        tmp_rank_sa = [0] * (self.n+1)
-        while self.k <= self.n:
+        tmp_rank_sa = [0] * (self.l+1)
+        while self.k <= self.l:
             self.sa.sort(key=functools.cmp_to_key(self.compare_sa))
 
             tmp_rank_sa[self.sa[0]] = 0
-            for i in range(1, self.n+1):
+            for i in range(1, self.l+1):
                 tmp_rank_sa[self.sa[i]] = tmp_rank_sa[self.sa[i-1]]
                 if self.compare_sa(self.sa[i-1], self.sa[i]) < 0:
                     tmp_rank_sa[self.sa[i]] += 1
-            for i in range(self.n+1):
+            for i in range(self.l+1):
                 self.rank_sa[i] = tmp_rank_sa[i]
 
             self.k *= 2
@@ -52,16 +52,16 @@ class SuffixArray:
     def build_lcp(self):
         """LCP配列の構築 O(N)
         """
-        rank_lcp = [0] * (self.n+1)
-        for i in range(self.n+1):
+        rank_lcp = [0] * (self.l+1)
+        for i in range(self.l+1):
             rank_lcp[self.sa[i]] = i
 
         h = 0
-        for i in range(self.n):
+        for i in range(self.l):
             j = self.sa[rank_lcp[i]-1]
             if h > 0:
                 h -= 1
-            while j + h < self.n and i + h < self.n:
+            while j + h < self.l and i + h < self.l:
                 if self.s[j+h] != self.s[i+h]:
                     break
                 h += 1
@@ -75,7 +75,7 @@ class SuffixArray:
         """
         return self.lcp
 
-    def is_contain(self, t):
+    def contains(self, t):
         """文字列検索 O(|T|log|S|)
 
         Args:
@@ -84,7 +84,7 @@ class SuffixArray:
         Returns:
             bool: tがsに含まれているか否か
         """
-        low, high = 0, self.n
+        low, high = 0, self.l
         while high - low > 1:
             mid = (high + low) // 2
             if self.s[self.sa[mid]:self.sa[mid]+len(t)] < t:
@@ -107,8 +107,8 @@ class SuffixArray:
         if self.rank_sa[i] != self.rank_sa[j]:
             return -1 if self.rank_sa[i] < self.rank_sa[j] else 1
         else:
-            rank_ik = (self.rank_sa[i+self.k] if i + self.k <= self.n else -1)
-            rank_jk = (self.rank_sa[j+self.k] if j + self.k <= self.n else -1)
+            rank_ik = (self.rank_sa[i+self.k] if i + self.k <= self.l else -1)
+            rank_jk = (self.rank_sa[j+self.k] if j + self.k <= self.l else -1)
             return -1 if rank_ik < rank_jk else 1
 
 
@@ -127,9 +127,9 @@ if __name__ == "__main__":
     # [0, 1, 4, 1, 1, 0, 3, 0, 0, 0, 2]
 
     t = 'racad'
-    print(sa.is_contain(t))
+    print(sa.contains(t))
     # True
 
     t = 'racab'
-    print(sa.is_contain(t))
+    print(sa.contains(t))
     # False

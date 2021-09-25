@@ -16,7 +16,7 @@ def kruskal():
     for w, p, q in edge:
         if uf.same(p, q):
             continue
-        uf.union(p, q)
+        uf.unite(p, q)
         cost += w
 
     return cost
@@ -28,7 +28,7 @@ class UnionFindTree:
 
     Attributes:
         n (int):    頂点数
-        par (list): 要素の格納先
+        par (list): 各要素の親要素を格納するリスト
     """
     def __init__(self, n):
         """初期化 O(1)
@@ -53,9 +53,8 @@ class UnionFindTree:
             self.par[x] = self.find(self.par[x])
             return self.par[x]
 
-
-    def union(self, x, y):
-        """要素の併合 O(1)
+    def unite(self, x, y):
+        """要素の併合 O(α(N))
 
         Args:
             x (int): 併合対象の集合に属する要素

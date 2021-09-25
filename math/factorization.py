@@ -1,25 +1,25 @@
-def factorization(n):
+def factorization(v):
     """素因数分解 O(√N)
 
     Args:
-        n (int): 対象の値
+        v (int): 対象の値
 
     Returns:
         list: 素因数とその個数の組み合わせの列挙
     """
     res = []
-    m = 2
-    while m ** 2 <= n:
-        if n % m == 0:
+    fact = 2
+    while fact ** 2 <= v:
+        if v % fact == 0:
             cnt = 0
-            while n % m == 0:
+            while v % fact == 0:
                 cnt += 1
-                n //= m
-            res.append([m, cnt])
-        m += 1
+                v //= fact
+            res.append([fact, cnt])
+        fact += 1
 
-    if n > 1:
-        res.append([n, 1])
+    if v > 1:
+        res.append([v, 1])
 
     return res
 
