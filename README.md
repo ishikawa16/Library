@@ -1,4 +1,4 @@
-# Python Library for Competitive Programming
+# Libraries for competitive programming
 ## Algorithm
 - [binary_search.py](algorithm/binary_search.py)
 - [compress.py](algorithm/compress.py)
@@ -7,6 +7,7 @@
 ## Data Structure
 - [binary_indexed_tree.py](data_structure/binary_indexed_tree.py)
 - [ext_binary_indexed_tree.py](data_structure/ext_binary_indexed_tree.py)
+- [lazy_segment_tree.py](data_structure/lazy_segment_tree.py)
 - [multiset.py](data_structure/multiset.py)
 - [segment_tree.py](data_structure/segment_tree.py)
 - [sparse_table.py](data_structure/sparse_table.py)
