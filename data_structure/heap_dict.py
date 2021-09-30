@@ -1,7 +1,7 @@
 import heapq
 
-class MultiSet:
-    """順序付き多重集合
+class HeapDict:
+    """HeapDict
 
     Attrubutes:
         d (dict):     要素を格納する辞書
@@ -96,22 +96,22 @@ class MultiSet:
 
 # Driver Code
 if __name__ == "__main__":
-    ms = MultiSet()
+    hd = HeapDict()
 
-    ms.add(3)              # {3}
-    ms.add(1)              # {1, 3}
-    ms.add(5)              # {1, 3, 5}
-    ms.add(2)              # {1, 2, 3, 5}
-    ms.add(4)              # {1, 2, 3, 4, 5}
-    print(ms.exists(1))
+    hd.add(3)              # {3}
+    hd.add(1)              # {1, 3}
+    hd.add(5)              # {1, 3, 5}
+    hd.add(2)              # {1, 2, 3, 5}
+    hd.add(4)              # {1, 2, 3, 4, 5}
+    print(hd.exists(1))
     # True
-    print(ms.min())
+    print(hd.min())
     # 1
-    print(ms.max())
+    print(hd.max())
     # 5
 
-    ms.remove(1)           # {2, 3, 4, 5}
-    print(ms.exists(1))
+    hd.remove(1)           # {2, 3, 4, 5}
+    print(hd.exists(1))
     # False
-    print(ms.min())
+    print(hd.min())
     # 2
