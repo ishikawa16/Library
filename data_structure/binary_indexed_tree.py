@@ -3,7 +3,7 @@ class BinaryIndexedTree:
 
     Attributes:
         n (int):     要素数
-        data (list): 要素の格納先
+        data (list): 要素の格納先 (1-indexed)
     """
     def __init__(self, n):
         """初期化 O(1)
