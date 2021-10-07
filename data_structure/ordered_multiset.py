@@ -1,5 +1,5 @@
-class ExtBinaryIndexedTree:
-    """BITを拡張したデータ構造 (k番目に小さい値を高速に取得)
+class OrderedMultiset:
+    """順序付き多重集合
 
     Attributes:
         n (int):     要素数
@@ -11,7 +11,7 @@ class ExtBinaryIndexedTree:
         Args:
             max_v (int): 要素の上限値
         """
-        self.n = max_v + 1
+        self.n = max_v
         self.data = [0] * (max_v+1)
 
     def add(self, v):
@@ -53,7 +53,7 @@ class ExtBinaryIndexedTree:
 
         return res
 
-    def lower_bound(self, k):
+    def get(self, k):
         """値の取得 O(logN)
 
         Args:
@@ -74,19 +74,33 @@ class ExtBinaryIndexedTree:
 
         return high
 
+    def lower_bound(self, v):
+        """値の取得 O(logN)
+
+        Args:
+            v (int): 対象の値
+
+        Returns:
+            int: vより大きい要素のうち最小の要素
+        """
+        k = self.search(v)
+        return self.get(k+1)
+
 
 # Driver Code
 if __name__ == "__main__":
-    bit = ExtBinaryIndexedTree(10)
+    multiset = OrderedMultiset(10)
 
-    bit.add(3)            # {3}
-    bit.add(1)            # {1, 3}
-    bit.add(5)            # {1, 3, 5}
-    print(bit.lower_bound(2))
+    multiset.add(3)            # {3}
+    multiset.add(1)            # {1, 3}
+    multiset.add(4)            # {1, 3, 4}
+    multiset.add(7)            # {1, 3, 4, 7}
+    multiset.add(4)            # {1, 3, 4, 4, 7}
+    print(multiset.get(2))
     # 3
-    print(bit.search(5))
-    # 3
+    print(multiset.lower_bound(5))
+    # 7
 
-    bit.remove(3)         # {1, 5}
-    print(bit.lower_bound(2))
-    # 5
+    multiset.remove(3)         # {1, 4, 4, 7}
+    print(multiset.get(2))
+    # 4
