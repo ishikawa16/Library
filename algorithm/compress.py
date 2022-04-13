@@ -1,17 +1,17 @@
 import bisect
 
-def compress(arr):
+def compress(a):
     """1次元座標圧縮 (大小関係の抽出) O(NlogN)
 
     Args:
-        arr (list): 対象の配列
+        a (list): 対象の配列
 
     Returns:
         list: 圧縮済みの配列
     """
-    tmp = sorted(list(set(arr)))
+    tmp = sorted(list(set(a)))
     compressed = []
-    for v in arr:
+    for v in a:
         compressed.append(bisect.bisect_left(tmp, v))
 
     return compressed

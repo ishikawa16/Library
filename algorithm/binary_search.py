@@ -20,16 +20,16 @@ def binary_search():
 
     return ok
 
-def isOK(targ):
+def isOK(target):
     """条件判定
 
     Args:
-        targ (int): 判定対象の値
+        target (int): 判定対象の値
 
     Returns:
-        bool: targが条件を満たすか否か
+        bool: targetが条件を満たすか否か
     """
-    return A[targ] >= 5
+    return A[target] >= 5
 
 
 # Driver Code
