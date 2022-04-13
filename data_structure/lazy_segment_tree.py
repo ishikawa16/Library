@@ -14,18 +14,18 @@ class LazySegmentTree:
             - RUQ (Range Update Query): [None] * (2*self.n)
             - RAQ (Range Add Query):    [0] * (2*self.n)
     """
-    def __init__(self, arr):
+    def __init__(self, a):
         """初期化 O(N)
 
         Args:
-            arr (list): 対象の配列
+            a (list): 対象の配列
         """
-        self.n = 1 << (len(arr)-1).bit_length()
+        self.n = 1 << (len(a)-1).bit_length()
         self.ide_ele = float('inf')
         self.tree = [self.ide_ele] * (2*self.n)
         self.lazy = [None] * (2*self.n)
 
-        for i, v in enumerate(arr, self.n):
+        for i, v in enumerate(a, self.n):
             self.tree[i] = v
         for i in range(self.n-1, 0, -1):
             self.tree[i] = self.seg_func(self.tree[2*i], self.tree[2*i+1])
