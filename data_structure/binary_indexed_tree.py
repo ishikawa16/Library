@@ -42,6 +42,23 @@ class BinaryIndexedTree:
 
         return range_sum
 
+    def lower_bound(self, v):
+        """BIT上の二分探索 O(logN)
+
+        Args:
+            v (int): 対象の値
+
+        Returns:
+            int: v <= sum(i) を満たす最小のi
+        """
+        idx = 0
+        for i in range(self.n.bit_length(), -1, -1):
+            nxt_idx = idx + (1 << i)
+            if nxt_idx <= self.n and self.tree[nxt_idx] < v:
+                v -= self.tree[nxt_idx]
+                idx = nxt_idx
+        return idx + 1
+
 
 # Driver Code
 if __name__ == "__main__":
@@ -56,6 +73,8 @@ if __name__ == "__main__":
     # 14
     print(bit.sum(5))
     # 19
+    print(bit.lower_bound(15))
+    # 4
 
     bit.add(1, 7)      # [7, 9, 5, 1, 4]
     print(bit.sum(5))
