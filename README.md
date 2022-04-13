@@ -7,7 +7,6 @@
 - [binary_indexed_tree.py](data_structure/binary_indexed_tree.py)
 - [heap_dict.py](data_structure/heap_dict.py)
 - [lazy_segment_tree.py](data_structure/lazy_segment_tree.py)
-- [ordered_multiset.py](data_structure/ordered_multiset.py)
 - [segment_tree.py](data_structure/segment_tree.py)
 - [sparse_table.py](data_structure/sparse_table.py)
 - [union_find_tree.py](data_structure/union_find_tree.py)
