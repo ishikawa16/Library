@@ -12,11 +12,8 @@ def prim():
     """
     cost = 0
     used = [False] * N
-    used[0] = True
     edgelist = []
-
-    for e in edge[0]:
-        heapq.heappush(edgelist, e)
+    heapq.heappush(edgelist, [0, 0])
 
     while edgelist:
         w, v = heapq.heappop(edgelist)

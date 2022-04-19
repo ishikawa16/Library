@@ -15,23 +15,18 @@ def dijkstra(s):
     """
     dist = [float('inf')] * N
     dist[s] = 0
-    used = [False] * N
-    used[s] = True
     edgelist = []
-
-    for e in edge[s]:
-        heapq.heappush(edgelist, e)
+    heapq.heappush(edgelist, [0, s])
 
     while edgelist:
         w, v = heapq.heappop(edgelist)
-        if used[v]:
+        if dist[v] < w:
             continue
-        dist[v] = w
-        used[v] = True
         for e in edge[v]:
-            if used[e[1]]:
+            if dist[e[1]] <= dist[v] + e[0]:
                 continue
-            heapq.heappush(edgelist, [e[0] + dist[v], e[1]])
+            dist[e[1]] = dist[v] + e[0]
+            heapq.heappush(edgelist, [dist[e[1]], e[1]])
 
     return dist
 
